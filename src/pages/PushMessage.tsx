@@ -1,5 +1,3 @@
 export default function PushMessage() {
-  return (
-    <div>PushMessage</div>
-  )
+  return <div>PushMessage</div>;
 }

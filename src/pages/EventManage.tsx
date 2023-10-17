@@ -1,5 +1,3 @@
 export default function EventManage() {
-  return (
-    <div>EventManage</div>
-  )
+  return <div>EventManage</div>;
 }
