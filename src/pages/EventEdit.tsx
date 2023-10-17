@@ -1,5 +1,3 @@
 export default function EventEdit() {
-  return (
-    <div>EventEdit</div>
-  )
+  return <div>EventEdit</div>;
 }
