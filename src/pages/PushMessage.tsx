@@ -1,3 +1,10 @@
+import SideBar from "../components/reuse/sidebar/SideBar";
+
 export default function PushMessage() {
-  return <div>PushMessage</div>;
+  return (
+    <div>
+      <SideBar />
+      PushMessage
+    </div>
+  );
 }

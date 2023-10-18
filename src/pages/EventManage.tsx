@@ -1,3 +1,10 @@
+import SideBar from "../components/reuse/sidebar/SideBar";
+
 export default function EventManage() {
-  return <div>EventManage</div>;
+  return (
+    <div>
+      <SideBar />
+      EventManage
+    </div>
+  );
 }

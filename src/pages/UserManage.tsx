@@ -1,3 +1,10 @@
+import SideBar from "../components/reuse/sidebar/SideBar";
+
 export default function UserManage() {
-  return <div>UserManage</div>;
+  return (
+    <div>
+      <SideBar />
+      UserManage
+    </div>
+  );
 }

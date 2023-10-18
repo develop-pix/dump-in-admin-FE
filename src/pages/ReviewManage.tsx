@@ -1,3 +1,10 @@
+import SideBar from "../components/reuse/sidebar/SideBar";
+
 export default function ReviewManage() {
-  return <div>ReviewManage</div>;
+  return (
+    <div>
+      <SideBar />
+      ReviewManage
+    </div>
+  );
 }
