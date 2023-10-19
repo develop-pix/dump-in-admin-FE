@@ -1,4 +1,4 @@
-import { red } from "@mui/material/colors";
+import { red, grey } from "@mui/material/colors";
 
 /*
  * 색상 파렛트
@@ -10,7 +10,12 @@ import { red } from "@mui/material/colors";
 
 /* Red */
 
-export const color_invalid = red["A700"];
+export const customColors = {
+  color_invalid: red["A700"],
+  main: "#ef7870",
+  black: grey[800],
+  white: grey[50],
+};
 
 /* Pink */
 
