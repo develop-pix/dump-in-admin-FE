@@ -1,9 +1,9 @@
-import SideBar from "../components/reuse/sidebar/SideBar";
+import SideBarContainer from "../components/reuse/sidebar/SideBarContainer";
 
 export default function DashBoard() {
   return (
     <div>
-      <SideBar />
+      <SideBarContainer />
       DashBoard
     </div>
   );

@@ -2,7 +2,7 @@ import LongInput from "../reuse/input/LongInput";
 import LoginButton from "../reuse/button/LoginButton";
 import { useState } from "react";
 import { Box } from "@mui/material";
-import { color_invalid } from "../../styles/base/Variable.style";
+import { customColors } from "../../styles/base/Variable.style";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
@@ -72,7 +72,7 @@ export default function LoginForm() {
           <LoginButton />
         </form>
         {invalid ? (
-          <Box marginTop="10px" color={color_invalid}>
+          <Box marginTop="10px" color={customColors.color_invalid}>
             로그인 정보가 올바르지 않습니다.
           </Box>
         ) : null}

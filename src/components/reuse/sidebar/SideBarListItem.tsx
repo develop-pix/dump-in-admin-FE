@@ -1,6 +1,7 @@
-import { ListItem, ListItemText } from "@mui/material";
+import { ListItemButton, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
-import { SideBarListItemType } from "../../../interface/SideBarListItem.interface";
+import { SideBarListItemType } from "../../../interface/SideBar.interface";
+import { customColors } from "../../../styles/base/Variable.style";
 
 export default function SideBarListItem({
   url,
@@ -9,24 +10,23 @@ export default function SideBarListItem({
   handleListClick,
 }: SideBarListItemType) {
   return (
-    <ListItem
-      button
+    <ListItemButton
       component={Link}
       to={url}
       selected={selectedIndex === url.slice(1)}
       onClick={() => handleListClick(url.slice(1))}
       sx={{
         "&.Mui-selected": {
-          backgroundColor: "#fff",
-          color: "#000",
+          backgroundColor: customColors.white,
+          color: customColors.black,
           "&:hover": {
-            backgroundColor: "#fff",
-            color: "#000",
+            backgroundColor: customColors.white,
+            color: customColors.black,
           },
         },
       }}
     >
       <ListItemText primary={text} />
-    </ListItem>
+    </ListItemButton>
   );
 }

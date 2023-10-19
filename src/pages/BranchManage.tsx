@@ -1,10 +1,10 @@
-import SideBar from "../components/reuse/sidebar/SideBar";
+import SideBarContainer from "../components/reuse/sidebar/SideBarContainer";
 
 // 지점 관리 페이지
 export default function BranchManage() {
   return (
-    <div style={{ display: "flex" }}>
-      <SideBar />
+    <div>
+      <SideBarContainer />
       <div>지점 관리 페이지</div>
     </div>
   );
