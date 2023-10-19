@@ -1,10 +1,10 @@
-import SideBar from "../components/reuse/sidebar/SideBar";
+import ReviewManageForm from "../components/review-manage/ReviewManageForm";
 
+// 리뷰 관리 페이지
 export default function ReviewManage() {
   return (
     <div>
-      <SideBar />
-      ReviewManage
+      <ReviewManageForm />
     </div>
   );
 }

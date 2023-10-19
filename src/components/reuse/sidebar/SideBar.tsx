@@ -1,4 +1,5 @@
 import SideBarListItem from "./SideBarListItem";
+import { customColors } from "../../../styles/base/Variable.style";
 import { useState, useEffect } from "react";
 import { Drawer, List } from "@mui/material";
 import { useLocation } from "react-router-dom";
@@ -25,8 +26,8 @@ export default function SideBar() {
         flexShrink: 0,
         "& .MuiDrawer-paper": {
           width: 200,
-          backgroundColor: "#ef7870",
-          color: "white",
+          backgroundColor: customColors.main,
+          color: customColors.white,
         },
       }}
     >

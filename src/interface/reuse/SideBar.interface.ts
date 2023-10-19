@@ -1,4 +1,4 @@
-export interface SidebarItemProps {
+export interface SideBarListItemType {
   url: string;
   text: string;
   selectedIndex: string;

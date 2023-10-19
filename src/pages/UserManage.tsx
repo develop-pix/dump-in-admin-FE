@@ -1,10 +1,10 @@
-import SideBar from "../components/reuse/sidebar/SideBar";
+import UserManageForm from "../components/manage-user/UserManageForm";
 
+// 유저 관리 페이지
 export default function UserManage() {
   return (
     <div>
-      <SideBar />
-      UserManage
+      <UserManageForm />
     </div>
   );
 }
