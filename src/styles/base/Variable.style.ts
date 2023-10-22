@@ -11,6 +11,7 @@ import { red, grey } from "@mui/material/colors";
 export const customColors = {
   color_invalid: red["A700"],
   main: "#ef7870",
+  sub_pink: "FFB6B2",
   black: grey[800],
   white: grey[50],
 };
