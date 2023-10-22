@@ -1,9 +1,9 @@
-export interface UserManageTableType {
-  nickname: string;
-  email: string;
-  join_date: string;
-  review: string;
-  branch: string;
-  event: string;
-  withdrawal_date: string;
+import { jsx } from "@emotion/react";
+
+export interface UserTableColumn {
+  id: "nickname" | "account" | "join_date" | "review" | "withdrawal_date";
+  label: string;
+  minWidth?: number;
+  align?: "right" | "left" | "center" | "inherit" | "justify" | undefined;
+  format?: (value: string) => jsx.JSX.Element;
 }

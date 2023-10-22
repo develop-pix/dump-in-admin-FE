@@ -4,7 +4,7 @@ export interface TableProps {
   columns: Column[];
   // 사용하는 컴포넌트 추가할떄 마다 타입 추가 해야함
   // ex) rows: EventRow[] | UserRow[] | BranchRow[]
-  rows: EventRow[];
+  rows: EventRow[] | UserRow[];
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -27,4 +27,14 @@ interface EventRow {
   description: string;
   term: string;
   hashtag: string;
+}
+
+/* UserManage 표 데이터 */
+interface UserRow {
+  [id: string]: string | number;
+  nickname: string;
+  account: string;
+  join_date: string;
+  review: string;
+  withdrawal_date: string;
 }
