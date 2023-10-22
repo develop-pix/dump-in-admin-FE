@@ -11,6 +11,7 @@ export const customColors = {
   color_border_gray: grey[300],
   color_bgcolor_grey: grey[50],
   main: "#ef7870",
+  sub_pink: "FFB6B2",
   black: grey[800],
   white: grey[50],
 };
