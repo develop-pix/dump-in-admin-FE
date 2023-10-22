@@ -5,3 +5,8 @@ export interface LongInputType {
   autocomplete: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export interface SearchInputProps {
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+}
