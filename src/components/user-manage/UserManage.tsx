@@ -37,6 +37,7 @@ export default function UserManage() {
     },
   ];
 
+  // 임의 데이터 100개
   const tablerows = Array.from({ length: 100 }, (_, index) => ({
     nickname: "C02",
     account: "jsee53@gmail.com",
@@ -51,10 +52,9 @@ export default function UserManage() {
         display: "flex",
         justifyContent: "center",
         margin: "40px 0px 40px 0px",
-        minWidth: "65vw",
       }}
     >
-      <Box sx={{ width: "70%" }}>
+      <Box sx={{ width: "80%", marginLeft: "20px" }}>
         <Box
           sx={{
             display: "flex",
