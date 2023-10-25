@@ -1,6 +1,6 @@
-import BranchManageFrom from "../components/manage-branch/BranchManageForm";
+import BranchManageFrom from "../components/branch-manage/BranchManageForm";
 
-// 지점 관리 페이지
+// 포토부스 관리 페이지
 export default function BranchManage() {
   return (
     <div>
