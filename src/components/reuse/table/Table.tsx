@@ -23,7 +23,8 @@ export default function Table({ columns, rows, page, setPage }: TableProps) {
   return (
     <Box
       sx={{
-        width: "100%",
+        width: "auto", // width를 "auto"로 설정
+        display: "inline-block", // display 속성을 "inline-block"으로 설정
         overflow: "hidden",
         border: "2px solid",
         borderColor: `${customColors.main}`,
@@ -48,12 +49,20 @@ export default function Table({ columns, rows, page, setPage }: TableProps) {
         <TableBody>
           {rows.slice(page * 10, page * 10 + 10).map((row) => {
             return (
-              <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+              /* 이미지 배열 타입 때문에 key 값 예외처리 */
+              <TableRow
+                hover
+                role="checkbox"
+                tabIndex={-1}
+                key={Array.isArray(row.id) ? row.id[0] : row.id}
+              >
                 {columns.map((column) => {
                   const value = row[column.id];
                   return (
                     <TableCell key={column.id} align={column.align}>
-                      {column.format && typeof value === "string"
+                      {column.formatArray && Array.isArray(value) // 이미지가 배열일 경우
+                        ? column.formatArray(value)
+                        : column.format && typeof value === "string"
                         ? column.format(value)
                         : value}
                     </TableCell>
