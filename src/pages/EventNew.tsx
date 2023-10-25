@@ -1,10 +1,9 @@
-import SideBar from "../components/reuse/sidebar/SideBar";
+import EventNewForm from "../components/event-new/EventNewForm";
 
 export default function EventNew() {
   return (
     <div>
-      <SideBar />
-      EventNew
+      <EventNewForm />
     </div>
   );
 }
