@@ -7,6 +7,8 @@ import SelectInput from "../reuse/input/SelectInput";
 import { useEffect } from "react";
 import FileInput from "../reuse/input/FileInput";
 import EditorInput from "../reuse/input/EditorInput";
+import DatePickerInput from "../reuse/input/DatePickerInput";
+import EventHashTags from "./EventHashTags";
 
 export default function EventInputForm({
   setTitle,
@@ -15,12 +17,14 @@ export default function EventInputForm({
   setImage,
   description,
   setDescription,
-  setTerm,
+  startDate,
+  setStartDate,
+  endDate,
+  setEndDate,
+  hashtag,
   setHashtag,
 }: EventInputFormProps) {
   /* API 생기면 서버에서 얻어옴 */
-
-  /* */
   const tempPhotoboothData: SelectInputData[] = [
     { photoboothId: 0, value: "포토이즘" },
     { photoboothId: 1, value: "인생네컷" },
@@ -84,7 +88,8 @@ export default function EventInputForm({
           >
             이미지
           </Typography>
-          <FileInput />
+          <FileInput setRepresentativeImage={setRepresentativeImage} />
+          <FileInput setImage={setImage} />
         </Box>
         <Box sx={{ display: "flex" }}>
           <Typography
@@ -108,6 +113,19 @@ export default function EventInputForm({
           >
             기간
           </Typography>
+          <Box sx={{ display: "flex", gap: "20px" }}>
+            <DatePickerInput
+              date={startDate}
+              setDate={setStartDate}
+              name={"이벤트 시작 일"}
+            />
+            -
+            <DatePickerInput
+              date={endDate}
+              setDate={setEndDate}
+              name={"이벤트 종료 일"}
+            />
+          </Box>
         </Box>
         <Box sx={{ display: "flex" }}>
           <Typography
@@ -117,8 +135,9 @@ export default function EventInputForm({
             display="flex"
             alignItems="center"
           >
-            해쉬태그
+            해시태그
           </Typography>
+          <EventHashTags hashtag={hashtag} setHashtag={setHashtag} />
         </Box>
       </Box>
     </Box>

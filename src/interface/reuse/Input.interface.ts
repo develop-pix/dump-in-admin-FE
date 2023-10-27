@@ -27,7 +27,30 @@ export interface SelectInputProps {
   setInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
+export interface FileInputProps {
+  setRepresentativeImage?: React.Dispatch<React.SetStateAction<string>>;
+  setImage?: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
 export interface EditorInputProps {
   input: EditorState;
   setInput: React.Dispatch<React.SetStateAction<EditorState>>;
+}
+
+export interface DatePickerInputProps {
+  date: Date;
+  setDate: React.Dispatch<React.SetStateAction<Date>>;
+  name: string;
+}
+
+export interface HashTagData {
+  id: number;
+  tag: string;
+  value: string;
+}
+
+export interface CheckBoxProps {
+  hashtagData: HashTagData;
+  hashtag: string[];
+  setHashtag: React.Dispatch<React.SetStateAction<string[]>>;
 }

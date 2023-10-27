@@ -8,11 +8,12 @@ export default function EventNew() {
   const [title, setTitle] = useState<string>("");
   const [photoboothName, setPhotoboothName] = useState<string>("");
   const [representativeImage, setRepresentativeImage] = useState<string>("");
-  const [image, setImage] = useState<string>("");
+  const [image, setImage] = useState<string[]>([]);
   const [description, setDescription] = useState<EditorState>(
     EditorState.createEmpty()
   );
-  const [term, setTerm] = useState<Date>(new Date());
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [endDate, setEndDate] = useState<Date>(new Date());
   const [hashtag, setHashtag] = useState<string[]>([]);
 
   /* 등록하기 버튼 입력시 */
@@ -25,7 +26,8 @@ export default function EventNew() {
       console.log(representativeImage);
       console.log(image);
       console.log(description);
-      console.log(term);
+      console.log(startDate);
+      console.log(endDate);
       console.log(hashtag);
     } catch (error) {
       console.log(error);
@@ -73,7 +75,11 @@ export default function EventNew() {
           setImage={setImage}
           description={description}
           setDescription={setDescription}
-          setTerm={setTerm}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+          hashtag={hashtag}
           setHashtag={setHashtag}
         />
       </Box>
