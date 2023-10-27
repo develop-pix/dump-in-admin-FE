@@ -10,6 +10,7 @@ export default function CheckBox({
 }: CheckBoxProps) {
   const [check, setCheck] = useState<boolean>(false);
 
+  /* CheckBox 클릭시 */
   const onCheckHandler = (
     e: React.ChangeEvent<HTMLInputElement>,
     data: string
@@ -19,6 +20,7 @@ export default function CheckBox({
     CheckedItemHandler(data, e.target.checked);
   };
 
+  /* HashTag 배열에 추가 or 삭제 */
   const CheckedItemHandler = (data: string, checked: boolean) => {
     if (checked) {
       setHashtag((prev) => [...prev, data]);
@@ -27,7 +29,6 @@ export default function CheckBox({
 
     if (!checked && hashtag.includes(data)) {
       setHashtag(hashtag.filter((item) => item !== data));
-
       return;
     }
     return;

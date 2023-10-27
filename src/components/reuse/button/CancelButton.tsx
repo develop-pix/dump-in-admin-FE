@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 export default function CancelButton() {
   const navigate = useNavigate();
 
-  console.log(location);
   /* 취소 버튼 클릭시  페이지로 이동 */
   const onClickEditButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

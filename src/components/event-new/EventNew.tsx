@@ -5,6 +5,7 @@ import { useState } from "react";
 import { EditorState } from "draft-js";
 import CancelButton from "../reuse/button/CancelButton";
 import SubmitButton from "../reuse/button/SubmitButton";
+import { useNavigate } from "react-router-dom";
 
 export default function EventNew() {
   const [title, setTitle] = useState<string>("");
@@ -17,19 +18,22 @@ export default function EventNew() {
   const [endDate, setEndDate] = useState<Date>(new Date());
   const [hashtag, setHashtag] = useState<string[]>([]);
 
+  const navigate = useNavigate();
+
   /* 등록하기 버튼 입력시 */
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      console.log(e);
+      /* API 나오면 필수 값 검증 해야함. */
       console.log(title);
       console.log(photoboothName);
-      /* image[0]은 대표사진 , 나머지는 일반 사진 */
+      /* image[0]은 대표사진, 나머지는 일반 사진으로 변수 변경 하여 전송 */
       console.log(image);
       console.log(description);
       console.log(startDate);
       console.log(endDate);
       console.log(hashtag);
+      navigate(-1);
     } catch (error) {
       console.log(error);
     }

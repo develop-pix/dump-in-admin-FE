@@ -1,4 +1,4 @@
-import { Box, InputAdornment, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import { TitleInputProps } from "../../../interface/reuse/Input.interface";
 
 export default function TitleInput({ setInput }: TitleInputProps) {
@@ -11,11 +11,6 @@ export default function TitleInput({ setInput }: TitleInputProps) {
       <TextField
         sx={{ width: "40vw" }}
         size="small"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">Title</InputAdornment>
-          ),
-        }}
         onChange={onInputChangeHandler}
       />
     </Box>

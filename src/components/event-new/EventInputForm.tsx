@@ -24,16 +24,16 @@ export default function EventInputForm({
   hashtag,
   setHashtag,
 }: EventInputFormProps) {
-  /* API 생기면 서버에서 얻어옴 */
+  /* API 생기면 서버에서 얻어옴, 동시에 PhotoboothName은 첫번째 값으로 초기화 */
   const tempPhotoboothData: SelectInputData[] = [
     { photoboothId: 0, value: "포토이즘" },
     { photoboothId: 1, value: "인생네컷" },
     { photoboothId: 2, value: "하루필름" },
     { photoboothId: 3, value: "포토매틱" },
   ];
-
   useEffect(() => {
     setPhotoboothName(tempPhotoboothData[0].value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

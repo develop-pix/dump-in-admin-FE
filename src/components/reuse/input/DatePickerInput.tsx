@@ -9,7 +9,7 @@ export default function DatePickerInput({
   setDate,
   name,
 }: DatePickerInputProps) {
-  
+  /* 백엔드 요청에따라 Date 또는 string 타입으로 수정 */
   const formatDate = dayjs(date);
 
   return (
