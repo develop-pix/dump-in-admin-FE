@@ -42,7 +42,7 @@ export default function EventInputForm({
         width: "100%",
         overflow: "hidden",
         border: "2px solid",
-        borderColor: `${customColors.main}`,
+        borderColor: `${customColors.main_pink}`,
         borderRadius: "0px 10px 10px 10px",
       }}
     >

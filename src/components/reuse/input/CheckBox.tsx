@@ -10,25 +10,20 @@ export default function CheckBox({
 }: CheckBoxProps) {
   const [check, setCheck] = useState<boolean>(false);
 
-  /* CheckBox 클릭시 */
-  const onCheckHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    data: string
-  ) => {
-    e.preventDefault();
-    setCheck(!check);
-    CheckedItemHandler(data, e.target.checked);
-  };
-
-  /* HashTag 배열에 추가 or 삭제 */
-  const CheckedItemHandler = (data: string, checked: boolean) => {
-    if (checked) {
-      setHashtag((prev) => [...prev, data]);
+  /* HashTag 배열에 추가 or 삭제, 3개이상 선택시 Alert */
+  const onCheckHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      if (hashtag.length >= 3) {
+        return alert("해시태그는 3개까지 선택 가능합니다.");
+      }
+      setCheck(!check);
+      setHashtag((prev) => [...prev, hashtagData.tag]);
       return;
     }
 
-    if (!checked && hashtag.includes(data)) {
-      setHashtag(hashtag.filter((item) => item !== data));
+    if (!e.target.checked && hashtag.includes(hashtagData.tag)) {
+      setCheck(!check);
+      setHashtag(hashtag.filter((item) => item !== hashtagData.tag));
       return;
     }
     return;
@@ -37,12 +32,7 @@ export default function CheckBox({
   return (
     <FormControlLabel
       label={hashtagData.value}
-      control={
-        <Checkbox
-          checked={check}
-          onChange={(e) => onCheckHandler(e, hashtagData.tag)}
-        />
-      }
+      control={<Checkbox checked={check} onChange={onCheckHandler} />}
     />
   );
 }

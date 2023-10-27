@@ -17,7 +17,9 @@ export default function EditorInput({ input, setInput }: EditorInputProps) {
         border: `1px solid ${customColors.grey} `,
         borderRadius: "5px",
         padding: "30px",
+        width: "40vw",
         height: "300px",
+        overflow: "scroll",
       }}
     >
       <Editor
