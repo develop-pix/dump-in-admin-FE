@@ -3,11 +3,12 @@ import { customColors } from "../../styles/base/Variable.style";
 import EventInputForm from "./EventInputForm";
 import { useState } from "react";
 import { EditorState } from "draft-js";
+import CancelButton from "../reuse/button/CancelButton";
+import SubmitButton from "../reuse/button/SubmitButton";
 
 export default function EventNew() {
   const [title, setTitle] = useState<string>("");
   const [photoboothName, setPhotoboothName] = useState<string>("");
-  const [representativeImage, setRepresentativeImage] = useState<string>("");
   const [image, setImage] = useState<string[]>([]);
   const [description, setDescription] = useState<EditorState>(
     EditorState.createEmpty()
@@ -23,7 +24,7 @@ export default function EventNew() {
       console.log(e);
       console.log(title);
       console.log(photoboothName);
-      console.log(representativeImage);
+      /* image[0]은 대표사진 , 나머지는 일반 사진 */
       console.log(image);
       console.log(description);
       console.log(startDate);
@@ -66,12 +67,15 @@ export default function EventNew() {
           >
             이벤트 관리
           </Box>
-          <Box sx={{ display: "flex", gap: "50px" }}></Box>
+          <Box sx={{ display: "flex", gap: "10px" }}>
+            <CancelButton />
+            <SubmitButton />
+          </Box>
         </Box>
         <EventInputForm
           setTitle={setTitle}
           setPhotoboothName={setPhotoboothName}
-          setRepresentativeImage={setRepresentativeImage}
+          image={image}
           setImage={setImage}
           description={description}
           setDescription={setDescription}

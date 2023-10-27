@@ -5,15 +5,15 @@ import { EventInputFormProps } from "../../interface/EventNew.interface";
 import { SelectInputData } from "../../interface/reuse/Input.interface";
 import SelectInput from "../reuse/input/SelectInput";
 import { useEffect } from "react";
-import FileInput from "../reuse/input/FileInput";
 import EditorInput from "../reuse/input/EditorInput";
 import DatePickerInput from "../reuse/input/DatePickerInput";
 import EventHashTags from "./EventHashTags";
+import MultiFileInput from "../reuse/input/MultiFileInput";
 
 export default function EventInputForm({
   setTitle,
   setPhotoboothName,
-  setRepresentativeImage,
+  image,
   setImage,
   description,
   setDescription,
@@ -88,8 +88,7 @@ export default function EventInputForm({
           >
             이미지
           </Typography>
-          <FileInput setRepresentativeImage={setRepresentativeImage} />
-          <FileInput setImage={setImage} />
+          <MultiFileInput image={image} setImage={setImage} />
         </Box>
         <Box sx={{ display: "flex" }}>
           <Typography

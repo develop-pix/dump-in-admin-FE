@@ -27,9 +27,9 @@ export interface SelectInputProps {
   setInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export interface FileInputProps {
-  setRepresentativeImage?: React.Dispatch<React.SetStateAction<string>>;
-  setImage?: React.Dispatch<React.SetStateAction<string[]>>;
+export interface MultiFileInputProps {
+  image: string[];
+  setImage: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export interface EditorInputProps {

@@ -3,7 +3,7 @@ import { EditorState } from "draft-js";
 export interface EventInputFormProps {
   setTitle: React.Dispatch<React.SetStateAction<string>>;
   setPhotoboothName: React.Dispatch<React.SetStateAction<string>>;
-  setRepresentativeImage: React.Dispatch<React.SetStateAction<string>>;
+  image: string[];
   setImage: React.Dispatch<React.SetStateAction<string[]>>;
   description: EditorState;
   setDescription: React.Dispatch<React.SetStateAction<EditorState>>;
