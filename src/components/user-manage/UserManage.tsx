@@ -70,7 +70,7 @@ export default function UserManage() {
                 borderBottom: "none",
                 padding: "13px 10px 5px 10px",
                 borderRadius: "10px 10px 0 0",
-                backgroundColor: `${customColors.main}`,
+                backgroundColor: `${customColors.sub_pink}`,
                 fontSize: "18px",
               }}
             >
@@ -108,7 +108,7 @@ export default function UserManage() {
           justifyContent: "center",
           margin: "50px 40px 0 40px",
           border: "2px solid",
-          borderColor: `${customColors.main}`,
+          borderColor: `${customColors.sub_pink}`,
           borderRadius: "10px",
           padding: "10px",
           alignItems: "center",

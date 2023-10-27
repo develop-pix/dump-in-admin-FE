@@ -82,7 +82,7 @@ export default function EventManage() {
               borderBottom: "none",
               padding: "13px 10px 5px 10px",
               borderRadius: "10px 10px 0 0",
-              backgroundColor: `${customColors.main}`,
+              backgroundColor: `${customColors.sub_pink}`,
               fontSize: "18px",
             }}
           >

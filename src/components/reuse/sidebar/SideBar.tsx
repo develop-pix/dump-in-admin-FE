@@ -26,7 +26,7 @@ export default function SideBar() {
         flexShrink: 0,
         "& .MuiDrawer-paper": {
           width: 200,
-          backgroundColor: customColors.main,
+          backgroundColor: customColors.main_pink,
           color: customColors.white,
         },
       }}
