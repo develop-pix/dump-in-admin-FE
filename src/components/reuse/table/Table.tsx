@@ -27,7 +27,7 @@ export default function Table({ columns, rows, page, setPage }: TableProps) {
         display: "inline-block", // display 속성을 "inline-block"으로 설정
         overflow: "hidden",
         border: "2px solid",
-        borderColor: `${customColors.main}`,
+        borderColor: `${customColors.sub_pink}`,
         borderRadius: "0px 10px 10px 10px",
       }}
     >
