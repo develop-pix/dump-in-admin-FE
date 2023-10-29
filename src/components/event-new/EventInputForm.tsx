@@ -39,10 +39,11 @@ export default function EventInputForm({
   return (
     <Box
       sx={{
-        width: "100%",
+        width: "auto", // width를 "auto"로 설정
+        display: "inline-block", // display 속성을 "inline-block"으로 설정
         overflow: "hidden",
         border: "2px solid",
-        borderColor: `${customColors.main_pink}`,
+        borderColor: `${customColors.sub_pink}`,
         borderRadius: "0px 10px 10px 10px",
       }}
     >

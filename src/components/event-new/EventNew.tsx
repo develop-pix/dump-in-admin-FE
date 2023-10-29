@@ -45,7 +45,7 @@ export default function EventNew() {
         display: "flex",
         justifyContent: "center",
         margin: "40px 0px 40px 0px",
-        minWidth: "75vw",
+        minWidth: "20vw",
       }}
       component="form"
       onSubmit={onSubmitHandler}
@@ -65,7 +65,7 @@ export default function EventNew() {
               borderBottom: "none",
               padding: "13px 10px 5px 10px",
               borderRadius: "10px 10px 0 0",
-              backgroundColor: `${customColors.main_pink}`,
+              backgroundColor: `${customColors.sub_pink}`,
               fontSize: "18px",
             }}
           >
