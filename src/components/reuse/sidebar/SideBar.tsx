@@ -11,7 +11,7 @@ export default function SideBar() {
 
   // url이 변경될 때마다 /이후 첫번째 인자를 선택된 인덱스로 저장
   useEffect(() => {
-    setSelectedIndex(location.pathname.slice(1));
+    setSelectedIndex(location.pathname.split("/").filter((item) => item !== "")[0]);
   }, [location]);
 
   const handleListClick = (index: string) => {

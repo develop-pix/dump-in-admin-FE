@@ -15,5 +15,6 @@ export const customColors = {
   main_blue: "#67A3DA",
   sub_blue: "#225381",
   black: grey[800],
+  grey: grey[400],
   white: grey[50],
 };
