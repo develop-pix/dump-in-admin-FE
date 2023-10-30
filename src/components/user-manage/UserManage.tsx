@@ -4,11 +4,18 @@ import { customColors } from "../../styles/base/Variable.style";
 import { UserTableColumn } from "../../interface/UserManage.interface";
 import { useState } from "react";
 import SearchInput from "../reuse/input/SearchInput";
+import { useNavigate } from "react-router-dom";
 
 export default function UserManage() {
   const [search, setSearch] = useState<string>("");
   const [page, setPage] = useState<number>(0);
   const rowCount = 100; // 데이터 개수 = 총 회원가입자 수
+
+  const navigate = useNavigate();
+
+  const onClickPushMessageButton = () => {
+    navigate("/pushmessage"); // 클릭 시 /pushmessage로 이동
+  };
 
   /* 표 제목 및 포맷 설정 */
   const tablecolumns: UserTableColumn[] = [
@@ -66,12 +73,12 @@ export default function UserManage() {
             <Box
               sx={{
                 fontWeight: "600",
-                borderColor: `${customColors.color_border_gray}`,
                 borderBottom: "none",
                 padding: "13px 10px 5px 10px",
                 borderRadius: "10px 10px 0 0",
                 backgroundColor: `${customColors.sub_pink}`,
                 fontSize: "18px",
+                cursor: "pointer",
               }}
             >
               사용자 관리
@@ -79,13 +86,15 @@ export default function UserManage() {
             <Box
               sx={{
                 fontWeight: "600",
-                borderColor: `${customColors.color_border_gray}`,
-                borderBottom: "none",
                 padding: "13px 10px 5px 10px",
                 borderRadius: "10px 10px 0 0",
+                border: `2px solid ${customColors.sub_pink}`,
+                borderBottom: "none",
                 backgroundColor: `${customColors.white}`,
                 fontSize: "18px",
+                cursor: "pointer",
               }}
+              onClick={onClickPushMessageButton}
             >
               알림 전송
             </Box>

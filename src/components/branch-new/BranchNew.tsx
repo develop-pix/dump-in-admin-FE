@@ -66,7 +66,7 @@ export default function BrnachNew() {
           </Box>
           <Box sx={{ display: "flex", gap: "10px" }}>
             <CancelButton />
-            <SubmitButton />
+            <SubmitButton value="등록" />
           </Box>
         </Box>
         <BranchInputForm
