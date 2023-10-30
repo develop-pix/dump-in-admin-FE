@@ -1,7 +1,9 @@
 import { EditorState } from "draft-js";
 
-export interface EventInputFormProps {
+export interface EventNewInputFormProps {
+  title: string;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
+  photoboothName: string;
   setPhotoboothName: React.Dispatch<React.SetStateAction<string>>;
   image: string[];
   setImage: React.Dispatch<React.SetStateAction<string[]>>;
@@ -11,11 +13,6 @@ export interface EventInputFormProps {
   setStartDate: React.Dispatch<React.SetStateAction<Date>>;
   endDate: Date;
   setEndDate: React.Dispatch<React.SetStateAction<Date>>;
-  hashtag: string[];
-  setHashtag: React.Dispatch<React.SetStateAction<string[]>>;
-}
-
-export interface EventHashTagProps {
   hashtag: string[];
   setHashtag: React.Dispatch<React.SetStateAction<string[]>>;
 }

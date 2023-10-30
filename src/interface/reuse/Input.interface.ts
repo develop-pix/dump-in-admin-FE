@@ -14,6 +14,7 @@ export interface SearchInputProps {
 }
 
 export interface TitleInputProps {
+  input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -24,6 +25,7 @@ export interface SelectInputData {
 
 export interface SelectInputProps {
   data: SelectInputData[];
+  input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -47,6 +49,11 @@ export interface HashTagData {
   id: number;
   tag: string;
   value: string;
+}
+
+export interface EventHashTagProps {
+  hashtag: string[];
+  setHashtag: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export interface CheckBoxProps {

@@ -1,7 +1,7 @@
+import { useEffect, useState } from "react";
 import { FormControlLabel } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import { CheckBoxProps } from "../../../interface/reuse/Input.interface";
-import { useState } from "react";
 
 export default function CheckBox({
   hashtagData,
@@ -9,6 +9,16 @@ export default function CheckBox({
   setHashtag,
 }: CheckBoxProps) {
   const [check, setCheck] = useState<boolean>(false);
+
+  /* 초기값 설정 */
+  useEffect(() => {
+    const checkInitialValue =
+      hashtag.filter((item) => item === hashtagData.tag).length === 1;
+    if (checkInitialValue) {
+      setCheck(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hashtag]);
 
   /* HashTag 배열에 추가 or 삭제, 3개이상 선택시 Alert */
   const onCheckHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

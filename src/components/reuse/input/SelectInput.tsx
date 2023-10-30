@@ -2,7 +2,11 @@ import { Box, MenuItem, TextField } from "@mui/material";
 import React from "react";
 import { SelectInputProps } from "../../../interface/reuse/Input.interface";
 
-export default function SelectInput({ data, setInput }: SelectInputProps) {
+export default function SelectInput({
+  data,
+  input,
+  setInput,
+}: SelectInputProps) {
   const onInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setInput(e.target.value);
@@ -15,7 +19,7 @@ export default function SelectInput({ data, setInput }: SelectInputProps) {
         select
         size="small"
         onChange={onInputChangeHandler}
-        defaultValue={data[0].value}
+        value={input === "" ? data[0].value : input}
       >
         {data.map((option) => {
           return (

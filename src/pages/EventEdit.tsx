@@ -1,10 +1,9 @@
-import SideBar from "../components/reuse/sidebar/SideBar";
+import EventEditForm from "../components/event-edit/EventEditForm";
 
 export default function EventEdit() {
   return (
     <div>
-      <SideBar />
-      EventEdit
+      <EventEditForm />
     </div>
   );
 }

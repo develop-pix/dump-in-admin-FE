@@ -1,13 +1,14 @@
 import { Box } from "@mui/material";
-import { customColors } from "../../styles/base/Variable.style";
-import EventNewInputForm from "./EventNewInputForm";
-import { useState } from "react";
 import { EditorState } from "draft-js";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { customColors } from "../../styles/base/Variable.style";
 import CancelButton from "../reuse/button/CancelButton";
 import SubmitButton from "../reuse/button/SubmitButton";
-import { useNavigate } from "react-router-dom";
+import EventEditInputForm from "./EventEditInputForm";
+import { stateToHTML } from "draft-js-export-html";
 
-export default function EventNew() {
+export default function EventEdit() {
   const [title, setTitle] = useState<string>("");
   const [photoboothName, setPhotoboothName] = useState<string>("");
   const [image, setImage] = useState<string[]>([]);
@@ -29,7 +30,7 @@ export default function EventNew() {
       console.log(photoboothName);
       /* image[0]은 대표사진, 나머지는 일반 사진으로 변수 변경 하여 전송 */
       console.log(image);
-      console.log(description);
+      console.log(stateToHTML(description.getCurrentContent()));
       console.log(startDate);
       console.log(endDate);
       console.log(hashtag);
@@ -76,7 +77,7 @@ export default function EventNew() {
             <SubmitButton />
           </Box>
         </Box>
-        <EventNewInputForm
+        <EventEditInputForm
           title={title}
           setTitle={setTitle}
           photoboothName={photoboothName}

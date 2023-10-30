@@ -9,8 +9,10 @@ export default function EditorInput({ input, setInput }: EditorInputProps) {
   /* Editor상태에 대해서 분석 해야함 레코드? */
   const onEditorStateChange = (editorState: EditorState) => {
     setInput(editorState);
+    console.log(input.getCurrentContent());
   };
 
+  /* 300자 제한 추후 추가 해야함. */
   return (
     <Box
       sx={{

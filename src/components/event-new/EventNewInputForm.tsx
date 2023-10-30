@@ -1,17 +1,19 @@
 import { Box, Typography } from "@mui/material";
 import { customColors } from "../../styles/base/Variable.style";
 import TitleInput from "../reuse/input/TitleInput";
-import { EventInputFormProps } from "../../interface/EventNew.interface";
+import { EventNewInputFormProps } from "../../interface/EventNew.interface";
 import { SelectInputData } from "../../interface/reuse/Input.interface";
 import SelectInput from "../reuse/input/SelectInput";
 import { useEffect } from "react";
 import EditorInput from "../reuse/input/EditorInput";
 import DatePickerInput from "../reuse/input/DatePickerInput";
-import EventHashTags from "./EventHashTags";
+import EventHashTags from "../reuse/input/EventHashTags";
 import MultiFileInput from "../reuse/input/MultiFileInput";
 
-export default function EventInputForm({
+export default function EventNewInputForm({
+  title,
   setTitle,
+  photoboothName,
   setPhotoboothName,
   image,
   setImage,
@@ -23,7 +25,7 @@ export default function EventInputForm({
   setEndDate,
   hashtag,
   setHashtag,
-}: EventInputFormProps) {
+}: EventNewInputFormProps) {
   /* API 생기면 서버에서 얻어옴, 동시에 PhotoboothName은 첫번째 값으로 초기화 */
   const tempPhotoboothData: SelectInputData[] = [
     { photoboothId: 0, value: "포토이즘" },
@@ -65,7 +67,7 @@ export default function EventInputForm({
           >
             제목
           </Typography>
-          <TitleInput setInput={setTitle} />
+          <TitleInput input={title} setInput={setTitle} />
         </Box>
         <Box sx={{ display: "flex" }}>
           <Typography
@@ -77,7 +79,11 @@ export default function EventInputForm({
           >
             포토부스명
           </Typography>
-          <SelectInput data={tempPhotoboothData} setInput={setPhotoboothName} />
+          <SelectInput
+            data={tempPhotoboothData}
+            input={photoboothName}
+            setInput={setPhotoboothName}
+          />
         </Box>
         <Box sx={{ display: "flex" }}>
           <Typography
