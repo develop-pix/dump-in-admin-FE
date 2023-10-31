@@ -5,3 +5,7 @@ export interface DeleteButtonProps {
 export interface EditButtonProps {
   value: string;
 }
+
+export interface SubmitButtonProps {
+  value: string;
+}
