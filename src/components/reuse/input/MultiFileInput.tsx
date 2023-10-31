@@ -3,7 +3,10 @@ import { MultiFileInputProps } from "../../../interface/reuse/Input.interface";
 import { VisuallyHiddenInput } from "../../../styles/reuse/Input.style";
 import { customColors } from "../../../styles/base/Variable.style";
 
-export default function FileInput({ image, setImage }: MultiFileInputProps) {
+export default function MultiFileInput({
+  image,
+  setImage,
+}: MultiFileInputProps) {
   /* 이미지 업로드 버튼 및 추가 하였을때 */
   const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import CheckBox from "../reuse/input/CheckBox";
-import { EventHashTagProps } from "../../interface/EventNew.interface";
+import CheckBox from "./CheckBox";
+import { EventHashTagProps } from "../../../interface/reuse/Input.interface";
 
 export default function EventHashTags({
   hashtag,
