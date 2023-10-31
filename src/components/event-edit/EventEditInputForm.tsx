@@ -96,7 +96,7 @@ export default function EventEditInputForm({
         description:
           "4번 글Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam ex atque blanditiis aut neque error dignissimos adipisci incidunt nobis. Veniam ut nemo quos nam a officiis necessitatibus dolorem ratione sed.",
         startDate: new Date("2023,12,11"),
-        endDate: new Date("2024,0,12"),
+        endDate: new Date("2024,1,12"),
         hashtag: ["캐릭터", "계절", "이달의프레임"],
       },
       {
