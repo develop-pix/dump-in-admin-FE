@@ -74,7 +74,7 @@ export default function EventEdit() {
           </Box>
           <Box sx={{ display: "flex", gap: "10px" }}>
             <CancelButton />
-            <SubmitButton value={"등록"} />
+            <SubmitButton value={"수정"} />
           </Box>
         </Box>
         <EventEditInputForm
