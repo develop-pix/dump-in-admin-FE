@@ -6,6 +6,7 @@ import EventManage from "./pages/EventManage";
 import BranchManage from "./pages/BranchManage";
 import ReviewManage from "./pages/ReviewManage";
 import UserManage from "./pages/UserManage";
+import PushMessage from "./pages/PushMessage";
 import { ThemeProvider, createTheme } from "@mui/material";
 import EventNew from "./pages/EventNew";
 import EventEdit from "./pages/EventEdit";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/branch/edit/:id" element={<BranchEdit />}></Route>
           <Route path="/branch" element={<BranchManage />}></Route>
           <Route path="/user" element={<UserManage />}></Route>
+          <Route path="/pushmessage" element={<PushMessage />}></Route>
           <Route path="/review" element={<ReviewManage />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>

@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
+import { SubmitButtonProps } from "../../../interface/reuse/Button.interface";
 
-export default function SubmitButton() {
-
+export default function SubmitButton({ value }: SubmitButtonProps) {
   return (
     <Button
       sx={{ margin: "0px 10px 5px 0px" }}
@@ -9,7 +9,7 @@ export default function SubmitButton() {
       variant="contained"
       type="submit"
     >
-      등록
+      {value}
     </Button>
   );
 }

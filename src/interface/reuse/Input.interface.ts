@@ -8,6 +8,15 @@ export interface LongInputType {
   setInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
+export interface RowFieldInputType {
+  label: string;
+  value: string;
+  width: string;
+  row: number;
+  maxLength: number | null;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export interface SearchInputProps {
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
@@ -40,6 +49,12 @@ export interface EditorInputProps {
 }
 
 export interface DatePickerInputProps {
+  date: Date;
+  setDate: React.Dispatch<React.SetStateAction<Date>>;
+  name: string;
+}
+
+export interface DateTimePickerInputProps {
   date: Date;
   setDate: React.Dispatch<React.SetStateAction<Date>>;
   name: string;

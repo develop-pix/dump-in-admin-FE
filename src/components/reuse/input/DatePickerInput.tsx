@@ -15,7 +15,7 @@ export default function DatePickerInput({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-        format="YYYY년 MM월 DD일"
+        format="YYYY-MM-DD"
         label={name}
         value={formatDate}
         onChange={(newDate) => setDate(dayjs(newDate).toDate())}
