@@ -51,7 +51,7 @@ export default function EventManage() {
 
   // 임의 데이터 100개
   const tablerows = Array.from({ length: 100 }, (_, index) => ({
-    id: "1", // 수정, 삭제로 넘겨줄 데이터 id 값
+    id: (index + 1).toString(), // 수정, 삭제로 넘겨줄 데이터 id 값
     name: "인생네컷",
     image:
       "https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png",

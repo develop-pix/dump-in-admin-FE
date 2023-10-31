@@ -1,7 +1,7 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { BranchHashTagProps } from "../../interface/BranchNew.interface";
 
-export default function EventHashTags({
+export default function BranchHashTags({
   hashtag,
   setHashtag,
 }: BranchHashTagProps) {
