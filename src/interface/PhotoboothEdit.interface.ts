@@ -1,4 +1,4 @@
-export interface BranchEditInputFormProps {
+export interface PhotoboothEditInputFormProps {
   photoboothName: string;
   setPhotoboothName: React.Dispatch<React.SetStateAction<string>>;
   image: string[];

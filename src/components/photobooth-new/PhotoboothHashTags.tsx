@@ -1,13 +1,17 @@
 import { Box, TextField, Typography } from "@mui/material";
-import { BranchHashTagProps } from "../../interface/BranchNew.interface";
+import { PhotoboothHashTagProps } from "../../interface/PhotoboothNew.interface";
 
-export default function BranchHashTags({
+export default function PhotoboothHashTags({
   hashtag,
   setHashtag,
-}: BranchHashTagProps) {
-  const handleHashTagChange = (index: number, value: string) => {
+}: PhotoboothHashTagProps) {
+  const handleHashTagChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index: number
+  ) => {
+    e.preventDefault();
     const updatedHashtags = [...hashtag];
-    updatedHashtags[index] = value;
+    updatedHashtags[index] = e.target.value;
     setHashtag(updatedHashtags);
   };
 
@@ -23,8 +27,8 @@ export default function BranchHashTags({
             <TextField
               label={`해시태그`}
               variant="outlined"
-              value={hashtag[index]}
-              onChange={(e) => handleHashTagChange(index, e.target.value)}
+              value={hashtag[index] ? hashtag[index] : ""}
+              onChange={(e) => handleHashTagChange(e, index)}
             />
           </Box>
         ))}

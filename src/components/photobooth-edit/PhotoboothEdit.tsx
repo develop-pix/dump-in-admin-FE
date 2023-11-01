@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { customColors } from "../../styles/base/Variable.style";
 import CancelButton from "../reuse/button/CancelButton";
 import SubmitButton from "../reuse/button/SubmitButton";
-import BranchEditInputForm from "./BranchEditInputForm";
+import PhotoboothEditInputForm from "./PhotoboothEditInputForm";
 
-export default function BranchEdit() {
+export default function PhotoboothhEdit() {
   const [photoboothName, setPhotoboothName] = useState<string>("");
   const [image, setImage] = useState<string[]>([]);
   const [hashtag, setHashtag] = useState<string[]>([]);
@@ -65,7 +65,7 @@ export default function BranchEdit() {
             <SubmitButton value={"수정"} />
           </Box>
         </Box>
-        <BranchEditInputForm
+        <PhotoboothEditInputForm
           photoboothName={photoboothName}
           setPhotoboothName={setPhotoboothName}
           image={image}

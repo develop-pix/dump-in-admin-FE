@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import Table from "../reuse/table/Table";
+import TableForm from "../reuse/table/TableForm";
 import { customColors } from "../../styles/base/Variable.style";
 import { UserTableColumn } from "../../interface/UserManage.interface";
 import { useState } from "react";
@@ -46,6 +46,7 @@ export default function UserManage() {
 
   // 임의 데이터 100개
   const tablerows = Array.from({ length: 100 }, (_, index) => ({
+    id:index,
     nickname: "C02",
     account: "jsee53@gmail.com",
     join_date: "2023/10/21",
@@ -104,7 +105,7 @@ export default function UserManage() {
             <SearchInput search={search} setSearch={setSearch} />
           </Box>
         </Box>
-        <Table
+        <TableForm
           columns={tablecolumns}
           rows={tablerows}
           page={page}

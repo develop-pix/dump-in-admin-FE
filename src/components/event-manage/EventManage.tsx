@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import Table from "../reuse/table/Table";
+import TableForm from "../reuse/table/TableForm";
 import { customColors } from "../../styles/base/Variable.style";
 import { EventTableColumn } from "../../interface/EventManage.interface";
 import { useState } from "react";
@@ -219,7 +219,7 @@ export default function EventManage() {
             <AddButton />
           </Box>
         </Box>
-        <Table
+        <TableForm
           columns={tablecolumns}
           rows={tablerows}
           page={page}

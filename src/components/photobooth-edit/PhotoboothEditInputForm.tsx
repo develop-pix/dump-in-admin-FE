@@ -2,18 +2,18 @@ import { useEffect } from "react";
 import { customColors } from "../../styles/base/Variable.style";
 import { Box, Typography, TextField } from "@mui/material";
 import MultiFileInput from "../reuse/input/MultiFileInput";
-import BranchHashTags from "../branch-new/BranchHashTags";
-import { BranchEditInputFormProps } from "../../interface/BranchEdit.interface";
+import PhotoboothHashTags from "../photobooth-new/PhotoboothHashTags";
+import { PhotoboothEditInputFormProps } from "../../interface/PhotoboothEdit.interface";
 import { useLocation } from "react-router-dom";
 
-export default function BranchEditInputForm({
+export default function PhotoboothEditInputForm({
   photoboothName,
   setPhotoboothName,
   image,
   setImage,
   hashtag,
   setHashtag,
-}: BranchEditInputFormProps) {
+}: PhotoboothEditInputFormProps) {
   const location = useLocation().pathname.split("/");
 
   const GetEditData = (currentID: string) => {
@@ -202,7 +202,7 @@ export default function BranchEditInputForm({
           >
             해시태그
           </Typography>
-          <BranchHashTags hashtag={hashtag} setHashtag={setHashtag} />
+          <PhotoboothHashTags hashtag={hashtag} setHashtag={setHashtag} />
         </Box>
       </Box>
     </Box>

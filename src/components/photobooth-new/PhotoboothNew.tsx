@@ -1,12 +1,12 @@
 import { Box } from "@mui/material";
 import { customColors } from "../../styles/base/Variable.style";
-import BranchInputForm from "./BranchInputForm";
+import PhotoboothInputForm from "./PhotoboothInputForm";
 import { useState } from "react";
 import CancelButton from "../reuse/button/CancelButton";
 import SubmitButton from "../reuse/button/SubmitButton";
 import { useNavigate } from "react-router-dom";
 
-export default function BrnachNew() {
+export default function PhotoboothNew() {
   const [photoboothName, setPhotoboothName] = useState<string>("");
   const [image, setImage] = useState<string[]>([]);
   const [hashtag, setHashtag] = useState<string[]>([]);
@@ -69,7 +69,7 @@ export default function BrnachNew() {
             <SubmitButton value="등록" />
           </Box>
         </Box>
-        <BranchInputForm
+        <PhotoboothInputForm
           photoboothName={photoboothName}
           setPhotoboothName={setPhotoboothName}
           image={image}

@@ -1,17 +1,17 @@
 import { Box, Typography, TextField } from "@mui/material";
 import { customColors } from "../../styles/base/Variable.style";
-import { BranchInputFormProps } from "../../interface/BranchNew.interface";
-import BranchHashTags from "./BranchHashTags";
+import { PhotoboothInputFormProps } from "../../interface/PhotoboothNew.interface";
+import PhotoboothHashTags from "./PhotoboothHashTags";
 import MultiFileInput from "../reuse/input/MultiFileInput";
 
-export default function BranchInputForm({
+export default function PhotoboothInputForm({
   photoboothName,
   setPhotoboothName,
   image,
   setImage,
   hashtag,
   setHashtag,
-}: BranchInputFormProps) {
+}: PhotoboothInputFormProps) {
   return (
     <Box
       sx={{
@@ -70,7 +70,7 @@ export default function BranchInputForm({
           >
             해시태그
           </Typography>
-          <BranchHashTags hashtag={hashtag} setHashtag={setHashtag} />
+          <PhotoboothHashTags hashtag={hashtag} setHashtag={setHashtag} />
         </Box>
       </Box>
     </Box>
