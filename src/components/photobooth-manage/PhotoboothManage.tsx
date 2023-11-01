@@ -1,19 +1,19 @@
 import { Box } from "@mui/material";
-import Table from "../reuse/table/Table";
+import TableForm from "../reuse/table/TableForm";
 import { customColors } from "../../styles/base/Variable.style";
-import { BranchTableColumn } from "../../interface/BranchManage.interface";
+import { PhotoboothTableColumn } from "../../interface/PhotoboothManage.interface";
 import { useState } from "react";
 import SearchInput from "../reuse/input/SearchInput";
 import AddButton from "../reuse/button/AddButton";
 import EditButton from "../reuse/button/EditButton";
 import DeleteButton from "../reuse/button/DeleteButton";
 
-export default function EventManage() {
+export default function PhotoboothManage() {
   const [search, setSearch] = useState<string>("");
   const [page, setPage] = useState<number>(0);
 
   /* 표 제목 및 포맷 설정 */
-  const tablecolumns: BranchTableColumn[] = [
+  const tablecolumns: PhotoboothTableColumn[] = [
     { id: "name", label: "포토부스명", minWidth: 120 },
     {
       id: "image",
@@ -93,7 +93,7 @@ export default function EventManage() {
             <AddButton />
           </Box>
         </Box>
-        <Table
+        <TableForm
           columns={tablecolumns}
           rows={tablerows}
           page={page}

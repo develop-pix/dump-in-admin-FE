@@ -1,6 +1,6 @@
 import { jsx } from "@emotion/react";
 
-export interface BranchTableColumn {
+export interface PhotoboothTableColumn {
   id: "name" | "image" | "hashtag" | "id";
   label: string;
   minWidth?: number;

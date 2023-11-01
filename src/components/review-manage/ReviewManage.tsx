@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import Table from "../reuse/table/Table";
+import TableForm from "../reuse/table/TableForm";
 import { customColors } from "../../styles/base/Variable.style";
 import { ReviewTableColumn } from "../../interface/ReviewManage.interface";
 import { useState } from "react";
@@ -69,7 +69,7 @@ export default function EventManage() {
 
   // 임의 데이터 100개
   const tablerows = Array.from({ length: 100 }, (_, index) => ({
-    id: "1", // 수정, 삭제로 넘겨줄 데이터 id 값
+    id: index, // 수정, 삭제로 넘겨줄 데이터 id 값
     nickname: "덤핀",
     branch: `포토이즘 연남점${index + 1}`,
     comment: "오늘을 oo이랑 포토이즘에서 신상 프레임 찍었다ㅋㅋ",
@@ -116,7 +116,7 @@ export default function EventManage() {
             <SearchInput search={search} setSearch={setSearch} />
           </Box>
         </Box>
-        <Table
+        <TableForm
           columns={tablecolumns}
           rows={tablerows}
           page={page}

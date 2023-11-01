@@ -1,12 +1,12 @@
 import { Box } from "@mui/material";
 import SideBar from "../reuse/sidebar/SideBar";
-import BranchEdit from "./BranchEdit";
+import PhotoboothhEdit from "./PhotoboothEdit";
 
-export default function BranchEditForm() {
+export default function PhotoboothEditForm() {
   return (
     <Box sx={{ display: "flex" }}>
       <SideBar />
-      <BranchEdit />
+      <PhotoboothhEdit />
     </Box>
   );
 }

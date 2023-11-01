@@ -1,4 +1,4 @@
-export interface BranchInputFormProps {
+export interface PhotoboothInputFormProps {
   photoboothName: string;
   setPhotoboothName: React.Dispatch<React.SetStateAction<string>>;
   image: string[];
@@ -8,7 +8,7 @@ export interface BranchInputFormProps {
   setHashtag: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-export interface BranchHashTagProps {
+export interface PhotoboothHashTagProps {
   hashtag: string[];
   setHashtag: React.Dispatch<React.SetStateAction<string[]>>;
 }
