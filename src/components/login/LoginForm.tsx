@@ -2,18 +2,22 @@ import { Box, Button, TextField } from "@mui/material";
 import { UseFormReturn } from "react-hook-form";
 import { LoginInput } from "../../interface/reuse/Input.interface";
 import { customColors } from "../../styles/base/Variable.style";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { SerializedError } from "@reduxjs/toolkit";
 
 interface IProps {
   onSubmitHandler: (data: LoginInput) => void;
   register: UseFormReturn<LoginInput>["register"];
   handleSubmit: UseFormReturn<LoginInput>["handleSubmit"];
   inputErrors: UseFormReturn<LoginInput>["formState"]["errors"];
+  loginError: FetchBaseQueryError | SerializedError | undefined;
 }
 export default function LoginForm({
   onSubmitHandler,
   register,
   handleSubmit,
   inputErrors,
+  loginError,
 }: IProps) {
   return (
     <Box
@@ -71,6 +75,11 @@ export default function LoginForm({
           <Button variant="contained" fullWidth type="submit">
             로그인
           </Button>
+          {loginError && "message" in loginError && (
+            <Box marginTop="10px" color={customColors.color_invalid}>
+              {loginError.message}
+            </Box>
+          )}
         </form>
       </Box>
     </Box>
