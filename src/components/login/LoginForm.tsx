@@ -1,24 +1,14 @@
 import { Box, Button, TextField } from "@mui/material";
-import { UseFormReturn } from "react-hook-form";
-import { LoginInput } from "../../interface/reuse/Input.interface";
 import { customColors } from "../../styles/base/Variable.style";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import { SerializedError } from "@reduxjs/toolkit";
+import { LoginFormIProps } from "../../interface/Login.interface";
 
-interface IProps {
-  onSubmitHandler: (data: LoginInput) => void;
-  register: UseFormReturn<LoginInput>["register"];
-  handleSubmit: UseFormReturn<LoginInput>["handleSubmit"];
-  inputErrors: UseFormReturn<LoginInput>["formState"]["errors"];
-  loginError: FetchBaseQueryError | SerializedError | undefined;
-}
 export default function LoginForm({
   onSubmitHandler,
   register,
   handleSubmit,
   inputErrors,
   loginError,
-}: IProps) {
+}: LoginFormIProps) {
   return (
     <Box
       sx={{
