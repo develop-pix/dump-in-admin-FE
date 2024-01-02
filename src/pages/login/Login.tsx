@@ -4,9 +4,11 @@ import { LoginInput } from "../../interface/reuse/Input.interface";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { requiredLogin } from "../../components/reuse/schema/loginSchema";
 import LoginForm from "../../components/login/LoginForm";
+import { useUserAuthenticatedMutation } from "../../features";
 
 export default function Login() {
-  const navigate = useNavigate();
+  const [usreAuthenticate, { error: loginError }] =
+    useUserAuthenticatedMutation();
 
   const {
     register,
@@ -21,26 +23,7 @@ export default function Login() {
   const onSubmitHandler: SubmitHandler<LoginInput> = async (
     data: LoginInput
   ) => {
-    try {
-      console.log(data);
-      //catch 문안으로 들어가야하나 build시 에러 발생하여 임의로 추가, API 적용후 아래 삭제할것
-
-      //if 문안으로 들어가야하나 build시 에러 발생하여 임의로 추가, API 적용후 아래 삭제할것
-      navigate("/dashboard");
-
-      /*
-      로그인 API 연동
-      let login_result = await 로그인시도(email, password);
-
-      if (login_result.결과코드 === 200) {
-        대쉬보드 페이지로 이동?
-      }else{
-        setInvalid(true);
-      }
-      */
-    } catch (error) {
-      console.log(error);
-    }
+    usreAuthenticate({ data });
   };
 
   return (
@@ -50,6 +33,7 @@ export default function Login() {
         register={register}
         handleSubmit={handleSubmit}
         inputErrors={inputErrors}
+        loginError={loginError}
       />
     </>
   );
