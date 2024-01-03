@@ -2,7 +2,7 @@ import { EditorState } from "draft-js";
 
 export interface LoginInput {
   username: string;
-  userPassword: string;
+  password: string;
 }
 export interface LongInputType {
   label: string;

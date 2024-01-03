@@ -45,20 +45,20 @@ export default function LoginForm({
 
           <div>
             <TextField
-              {...register("userPassword")}
+              {...register("password")}
               label="Password"
               type="password"
-              id="userPassword"
-              name="userPassword"
+              id="password"
+              name="password"
               placeholder="비밀번호를 입력해주세요"
               autoComplete="current-password"
               margin="dense"
               fullWidth
             />
 
-            {inputErrors?.["userPassword"] && (
+            {inputErrors?.["password"] && (
               <Box marginTop="10px" color={customColors.color_invalid}>
-                {inputErrors?.["userPassword"].message}
+                {inputErrors?.["password"].message}
               </Box>
             )}
           </div>

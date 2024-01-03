@@ -7,14 +7,23 @@ export const api = createApi({
 
   endpoints: (build) => ({
     userAuthenticated: build.mutation({
-      query: ({ username, userPassword }) => ({
+      query: ({ username, password }) => ({
         url: `/auth/login`,
         method: "POST",
-        body: { username: username, password: userPassword },
+        body: { username: username, password: password },
         headers: {
           "Content-Type": "application/json",
         },
       }),
+
+      async onQueryStarted({ id, qty }, api) {
+        if (qty && id) {
+          const { dispatch, queryFulfilled } = api;
+          const { data } = await queryFulfilled;
+
+          console.log(data);
+        }
+      },
     }),
   }),
 });
