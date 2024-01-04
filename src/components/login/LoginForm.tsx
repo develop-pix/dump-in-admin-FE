@@ -65,9 +65,9 @@ export default function LoginForm({
           <Button variant="contained" fullWidth type="submit">
             로그인
           </Button>
-          {loginError && "message" in loginError && (
+          {loginError && "data" in loginError && (
             <Box marginTop="10px" color={customColors.color_invalid}>
-              {loginError.message}
+              {(loginError as { data: { message: string } })?.data?.message}
             </Box>
           )}
         </form>
