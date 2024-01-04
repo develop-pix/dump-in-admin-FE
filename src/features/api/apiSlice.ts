@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { setCredentials } from "../auth/authSlice";
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -16,13 +17,12 @@ export const api = createApi({
         },
       }),
 
-      async onQueryStarted({ id, qty }, api) {
-        if (qty && id) {
-          const { dispatch, queryFulfilled } = api;
-          const { data } = await queryFulfilled;
+      // eslint-disable-next-line no-empty-pattern
+      async onQueryStarted({}, api) {
+        const { dispatch, queryFulfilled } = api;
+        const { data } = await queryFulfilled;
 
-          console.log(data);
-        }
+        dispatch(setCredentials(data));
       },
     }),
   }),
