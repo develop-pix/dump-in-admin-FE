@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { isApiError, toErrorWithMessage } from "../../utils";
 import { setCredentials } from "../auth/authSlice";
 
 export const api = createApi({
@@ -11,7 +12,7 @@ export const api = createApi({
       query: ({ username, password }) => ({
         url: `/auth/login`,
         method: "POST",
-        body: { username: username, password: password },
+        body: { username, password },
         headers: {
           "Content-Type": "application/json",
         },
@@ -20,9 +21,17 @@ export const api = createApi({
       // eslint-disable-next-line no-empty-pattern
       async onQueryStarted({}, api) {
         const { dispatch, queryFulfilled } = api;
-        const { data } = await queryFulfilled;
-
-        dispatch(setCredentials(data));
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setCredentials(data));
+        } catch (error) {
+          if (isApiError(error)) {
+            const { data } = error.error;
+            reportError(data.message);
+          } else {
+            reportError(toErrorWithMessage(error).message);
+          }
+        }
       },
     }),
   }),
