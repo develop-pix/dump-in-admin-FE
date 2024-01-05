@@ -1,7 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
-const initialState = {};
+type AuthState = {
+  code: number;
+  message: string;
+  success: boolean;
+  data: object;
+};
+
+type State = AuthState | object;
+
+const initialState: State = {};
 
 const authSlice = createSlice({
   name: "auth",
