@@ -5,9 +5,8 @@ import { SerializedError } from "@reduxjs/toolkit";
 import { SubmitHandler, UseFormReturn, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginInput } from "../../interface/reuse/Input.interface";
-import { requiredLogin } from "../../components/reuse/schema/loginSchema";
 import { selectAuth, useUserAuthenticatedMutation } from "../../features";
-import { useAppSelector } from "../../hooks";
+import { requiredLogin, useAppSelector } from "../../hooks";
 
 export const useLoginPage = (): [
   onSubmitHandler: (data: LoginInput) => void,
@@ -27,14 +26,14 @@ export const useLoginPage = (): [
     resolver: zodResolver(requiredLogin),
   });
 
-  /*로그인 Form을 위한 Submit Handler*/
+  /** 로그인 Form을 위한 Submit Handler  */
   const onSubmitHandler: SubmitHandler<LoginInput> = async (
     data: LoginInput
   ) => {
     userAuthenticate(data);
   };
 
-  /** Login시 Dashboard Page로 이동 */
+  // Login시 Dashboard Page로 이동
   useRedirectDashboard();
 
   return [onSubmitHandler, register, handleSubmit, inputErrors, loginError];
