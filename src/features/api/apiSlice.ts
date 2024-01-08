@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { isApiError, toErrorWithMessage } from "../../utils";
 import { setCredentials } from "../auth/authSlice";
-import { IUser } from "../../interface/dto/Dto.interface";
+import { IDashboard, IUser } from "../../interface/dto/Dto.interface";
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -9,6 +9,9 @@ export const api = createApi({
   }),
 
   endpoints: (build) => ({
+    getDashboard: build.query<IDashboard, void>({
+      query: () => "/dashboard",
+    }),
     userAuthenticated: build.mutation<
       IUser,
       { username: string; password: string }
@@ -41,4 +44,4 @@ export const api = createApi({
   }),
 });
 
-export const { useUserAuthenticatedMutation } = api;
+export const { useUserAuthenticatedMutation, useGetDashboardQuery } = api;
