@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { isApiError, toErrorWithMessage } from "../../utils";
 import { setCredentials } from "../auth/authSlice";
+import { IUser } from "../../interface/dto/Dto.interface";
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -8,7 +9,10 @@ export const api = createApi({
   }),
 
   endpoints: (build) => ({
-    userAuthenticated: build.mutation({
+    userAuthenticated: build.mutation<
+      IUser,
+      { username: string; password: string }
+    >({
       query: ({ username, password }) => ({
         url: `/auth/login`,
         method: "POST",
