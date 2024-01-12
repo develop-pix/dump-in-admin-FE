@@ -9,40 +9,73 @@ import {
   Typography,
 } from "@mui/material";
 import { customColors } from "../../styles/base/Variable.style";
-import {
-  DashBoardProps,
-  DashBoardMonthData,
-} from "../../interface/DashBoard.interface";
-
 import Box from "@mui/material/Box";
+import { DashBoardProps } from "../../interface/DashBoard.interface";
+import { useMemo } from "react";
 
 export default function DashBoardTable({ data }: DashBoardProps) {
-  // 이번달 합계 데이터
-  const sum_data: DashBoardMonthData = {
-    visitors: 10000,
-    signups: 400,
-    reviews: 3000,
-  };
+  // 주 리뷰 수, 회원 가입자 수
+  const weekData = useMemo(
+    () => data && [...data].slice(data.length - 7, data.length),
+    [data]
+  );
+  // 주 회원가입자 수
+  const weekUsers = useMemo(
+    () =>
+      weekData?.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.user,
+        0
+      ),
+    [weekData]
+  );
 
-  // 주간 방문자 수, 회원가입 수, 리뷰 수
-  const weekVisitors = data.reduce((total, item) => total + item.visitors, 0);
-  const weekSignups = data.reduce((total, item) => total + item.signups, 0);
-  const weekReviews = data.reduce((total, item) => total + item.reviews, 0);
+  // 주 리뷰 수
+  const weekReviews = useMemo(
+    () =>
+      weekData?.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.review,
+        0
+      ),
+    [weekData]
+  );
+
+  // 달 리뷰 수, 회원 가입자 수
+  const monthData = useMemo(
+    () => data && [...data].slice(data.length - 28, data.length),
+    [data]
+  );
+
+  // 달 회원 가입자 수
+  const monthUsers = useMemo(
+    () =>
+      monthData?.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.user,
+        0
+      ),
+    [monthData]
+  );
+  // 달 리뷰 수
+  const monthReviews = useMemo(
+    () =>
+      monthData?.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.review,
+        0
+      ),
+    [monthData]
+  );
 
   // 월간 합계 데이터
   const thisMonthData = {
     date: "이번 달 합계",
-    visitors: sum_data ? sum_data.visitors : 0,
-    signups: sum_data ? sum_data.signups : 0,
-    reviews: sum_data ? sum_data.reviews : 0,
+    user: monthUsers,
+    review: monthReviews,
   };
 
   // 주간 합계 데이터
   const thisWeekData = {
     date: "최근 7일 합계",
-    visitors: weekVisitors,
-    signups: weekSignups,
-    reviews: weekReviews,
+    user: weekUsers,
+    review: weekReviews,
   };
 
   return (
@@ -63,32 +96,28 @@ export default function DashBoardTable({ data }: DashBoardProps) {
           <TableHead>
             <TableRow>
               <TableCell>일자</TableCell>
-              <TableCell>방문자</TableCell>
               <TableCell>가입자</TableCell>
               <TableCell>리뷰</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((item) => (
+            {data?.map((item) => (
               <TableRow key={item.date}>
                 <TableCell>{item.date}</TableCell>
-                <TableCell>{item.visitors}</TableCell>
-                <TableCell>{item.signups}</TableCell>
-                <TableCell>{item.reviews}</TableCell>
+                <TableCell>{item.user}</TableCell>
+                <TableCell>{item.review}</TableCell>
               </TableRow>
             ))}
 
             <TableRow key={thisWeekData.date}>
               <TableCell>{thisWeekData.date}</TableCell>
-              <TableCell>{thisWeekData.visitors}</TableCell>
-              <TableCell>{thisWeekData.signups}</TableCell>
-              <TableCell>{thisWeekData.reviews}</TableCell>
+              <TableCell>{thisWeekData.user}</TableCell>
+              <TableCell>{thisWeekData.review}</TableCell>
             </TableRow>
             <TableRow key={thisMonthData.date}>
               <TableCell>{thisMonthData.date}</TableCell>
-              <TableCell>{thisMonthData.visitors}</TableCell>
-              <TableCell>{thisMonthData.signups}</TableCell>
-              <TableCell>{thisMonthData.reviews}</TableCell>
+              <TableCell>{thisMonthData.user}</TableCell>
+              <TableCell>{thisMonthData.review}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
