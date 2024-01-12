@@ -1,28 +1,30 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { isApiError, toErrorWithMessage } from "../../utils";
 import { setCredentials } from "../auth/authSlice";
-import { IDashboard, IUser } from "../../interface/dto/Dto.interface";
+import { IDashboards, IUser } from "../../interface/dto/Dto.interface";
 
 export const api = createApi({
+  reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BACKEND_URL,
+    baseUrl: "/",
   }),
 
   endpoints: (build) => ({
-    getDashboard: build.query<IDashboard, void>({
-      query: () => "/dashboard",
+    getDashboard: build.query<IDashboards, void>({
+      query: () => "api/dashboard",
     }),
     userAuthenticated: build.mutation<
       IUser,
       { username: string; password: string }
     >({
       query: ({ username, password }) => ({
-        url: `/auth/login`,
+        url: `api/auth/login`,
         method: "POST",
         body: { username, password },
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
       }),
 
       // eslint-disable-next-line no-empty-pattern
