@@ -6,12 +6,14 @@ export interface IUser {
 }
 
 export interface IDashboard {
+  date: string;
+  user: number;
+  review: number;
+}
+
+export interface IDashboards {
   code: number;
   message: string;
   success: boolean;
-  data: {
-    date: string;
-    user: number;
-    review: number;
-  };
+  data: IDashboard[];
 }
