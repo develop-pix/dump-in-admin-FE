@@ -14,12 +14,12 @@ import { DashBoardProps } from "../../interface/DashBoard.interface";
 import { useMemo } from "react";
 
 export default function DashBoardTable({ data }: DashBoardProps) {
-  // 주 리뷰 수, 회원 가입자 수
+  /** 주 리뷰 수, 회원 가입자 수 */
   const weekData = useMemo(
     () => data && [...data].slice(data.length - 7, data.length),
     [data]
   );
-  // 주 회원가입자 수
+  /** 주 회원가입자 수 */
   const weekUsers = useMemo(
     () =>
       weekData?.reduce(
@@ -29,7 +29,7 @@ export default function DashBoardTable({ data }: DashBoardProps) {
     [weekData]
   );
 
-  // 주 리뷰 수
+  /** 주 리뷰 수 */
   const weekReviews = useMemo(
     () =>
       weekData?.reduce(
@@ -39,13 +39,13 @@ export default function DashBoardTable({ data }: DashBoardProps) {
     [weekData]
   );
 
-  // 달 리뷰 수, 회원 가입자 수
+  /** 달 리뷰 수, 회원 가입자 수  */
   const monthData = useMemo(
     () => data && [...data].slice(data.length - 28, data.length),
     [data]
   );
 
-  // 달 회원 가입자 수
+  /** 달 회원 가입자 수 */
   const monthUsers = useMemo(
     () =>
       monthData?.reduce(
@@ -54,7 +54,7 @@ export default function DashBoardTable({ data }: DashBoardProps) {
       ),
     [monthData]
   );
-  // 달 리뷰 수
+  /** 달 리뷰 수 */
   const monthReviews = useMemo(
     () =>
       monthData?.reduce(
@@ -64,14 +64,14 @@ export default function DashBoardTable({ data }: DashBoardProps) {
     [monthData]
   );
 
-  // 월간 합계 데이터
+  /** 월간 합계 데이터 */
   const thisMonthData = {
     date: "이번 달 합계",
     user: monthUsers,
     review: monthReviews,
   };
 
-  // 주간 합계 데이터
+  /** 주간 합계 데이터 */
   const thisWeekData = {
     date: "최근 7일 합계",
     user: weekUsers,
