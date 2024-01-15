@@ -1,16 +1,16 @@
-export interface DashBoardProps {
-  data: DashBoardData[];
-}
+import { IDashboards } from "./dto/Dto.interface";
 
 export interface DashBoardData {
   date: string;
-  visitors: number;
-  signups: number;
-  reviews: number;
+  user: number;
+  review: number;
 }
 
 export interface DashBoardMonthData {
-  visitors: number;
-  signups: number;
-  reviews: number;
+  user: number;
+  review: number;
+}
+
+export interface DashBoardProps {
+  data: IDashboards["data"] | undefined;
 }

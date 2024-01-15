@@ -10,8 +10,8 @@ import {
 } from "recharts";
 import { Paper, Typography } from "@mui/material";
 import { customColors } from "../../styles/base/Variable.style";
-import { DashBoardProps } from "../../interface/DashBoard.interface";
 import Box from "@mui/material/Box";
+import { DashBoardProps } from "../../interface/DashBoard.interface";
 
 export default function DashBoardChart({ data }: DashBoardProps) {
   return (
@@ -25,7 +25,7 @@ export default function DashBoardChart({ data }: DashBoardProps) {
       }}
     >
       <Box sx={{ marginBottom: "20px" }}>
-        <Typography variant="h6">회원가입 / 방문자 현황</Typography>
+        <Typography variant="h6">회원가입 현황</Typography>
       </Box>
 
       <ResponsiveContainer width="100%" aspect={1.8}>
@@ -37,14 +37,8 @@ export default function DashBoardChart({ data }: DashBoardProps) {
           <Legend />
           <Line
             type="linear"
-            dataKey="visitors"
+            dataKey="user"
             stroke={customColors.main_blue}
-            name="방문자 수"
-          />
-          <Line
-            type="linear"
-            dataKey="signups"
-            stroke={customColors.sub_blue}
             name="회원가입 수"
           />
         </LineChart>
