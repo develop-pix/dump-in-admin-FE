@@ -1,9 +1,9 @@
 export interface DeleteButtonProps {
-  value: string;
+  value: number;
 }
 
 export interface EditButtonProps {
-  value: string;
+  value: number;
 }
 
 export interface SubmitButtonProps {
