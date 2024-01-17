@@ -3,7 +3,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import {
   Dashboard,
   EventEdit,
-  EventManage,
+  EventManagePage,
   EventNew,
   Login,
   NotFound,
@@ -31,7 +31,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />}></Route>
           </Route>
           <Route element={<RequireAuth />}>
-            <Route path="/event" element={<EventManage />}></Route>
+            <Route path="/event" element={<EventManagePage />}></Route>
           </Route>
           <Route element={<RequireAuth />}>
             <Route path="/event/new" element={<EventNew />}></Route>
