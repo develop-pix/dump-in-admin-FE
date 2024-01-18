@@ -4,6 +4,7 @@ import { useAppSelector } from "../../hooks";
 import EventManage from "../../components/event-manage/EventManage";
 import SideBar from "../../components/reuse/sidebar/SideBar";
 import { Box } from "@mui/material";
+import { IEvent } from "../../interface/dto/Dto.interface";
 
 export default function EventManagePage() {
   const [page, setPage] = useState<number>(0);
@@ -38,12 +39,24 @@ export default function EventManagePage() {
     };
   }, [getEvent, hasReduxVal, page]);
 
+  /** EventState의 data 프로퍼티끼리만 합친 데이터 */
+  const mergedData = useMemo(
+    () =>
+      events.reduce((accumulator: IEvent[], currentValue) => {
+        return accumulator.concat(currentValue.data);
+      }, [] as IEvent[]),
+    [events]
+  );
+
+  console.log(mergedData);
+
   return (
     <Box sx={{ display: "flex" }}>
       <SideBar />
       <EventManage
         data={events}
         page={page}
+        mergedData={mergedData}
         handlePageChange={handlePageChange}
       />
     </Box>

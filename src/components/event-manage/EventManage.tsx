@@ -4,17 +4,23 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddButton from "../reuse/button/AddButton";
 import TableContainer from "./table/TableContainer";
 import { EventsState } from "../../features";
+import { IEvent } from "../../interface/dto/Dto.interface";
 
 interface IProps {
   data: EventsState[];
   page: number;
+  mergedData: IEvent[];
   handlePageChange: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
     newPage: number
   ) => void;
 }
 
-export default function EventManage({ data, page, handlePageChange }: IProps) {
+export default function EventManage({
+  mergedData,
+  page,
+  handlePageChange,
+}: IProps) {
   return (
     <Box
       sx={{
@@ -68,7 +74,7 @@ export default function EventManage({ data, page, handlePageChange }: IProps) {
           </Box>
         </Box>
         <TableContainer
-          eventData={data}
+          mergedData={mergedData}
           page={page}
           handlePageChange={handlePageChange}
         />

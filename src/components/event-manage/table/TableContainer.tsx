@@ -9,11 +9,10 @@ import { customColors } from "../../../styles/base/Variable.style";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 import { IEvent } from "../../../interface/dto/Dto.interface";
-import { EventsState } from "../../../features";
 import { useMemo } from "react";
 
 interface IProps {
-  eventData: EventsState[];
+  mergedData: IEvent[];
   page: number;
   handlePageChange: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
@@ -22,19 +21,10 @@ interface IProps {
 }
 
 export default function TableContainer({
-  eventData,
+  mergedData,
   page,
   handlePageChange,
 }: IProps) {
-  /** EventState의 data 프로퍼티끼리만 합친 데이터 */
-  const mergedData = useMemo(
-    () =>
-      eventData.reduce((accumulator: IEvent[], currentValue) => {
-        return accumulator.concat(currentValue.data);
-      }, [] as IEvent[]),
-    [eventData]
-  );
-
   /** 자를 페이지 단위 */
   const pageUnit = 10;
 
