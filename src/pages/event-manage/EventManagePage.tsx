@@ -1,13 +1,17 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Box } from "@mui/material";
+
+import { IEvent } from "../../interface/dto/Dto.interface";
 import { selectEvent, useGetEventMutation } from "../../features";
-import { useAppSelector } from "../../hooks";
+import { useAppSelector, useDebounce } from "../../hooks";
 import EventManage from "../../components/event-manage/EventManage";
 import SideBar from "../../components/reuse/sidebar/SideBar";
-import { Box } from "@mui/material";
-import { IEvent } from "../../interface/dto/Dto.interface";
+import { formatDate } from "../../utils";
 
 export default function EventManagePage() {
   const [page, setPage] = useState<number>(0);
+  const [search, setSearch] = useState<string>("");
+
   const [getEvent] = useGetEventMutation();
   const events = useAppSelector(selectEvent);
 
@@ -48,7 +52,40 @@ export default function EventManagePage() {
     [events]
   );
 
-  console.log(mergedData);
+  const debounceSearch = useDebounce((term) => {
+    setSearch(term);
+  }, 700);
+
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.currentTarget.value as string;
+    debounceSearch(input);
+  };
+
+  /** Search 타이핑 후 바뀐 데이터 */
+  const dataAfterSearch = useMemo(() => {
+    return mergedData.filter((data) => {
+      const query = new RegExp(search, "i");
+      const testQuery = (words: string) => query.test(words);
+
+      if (testQuery(data.mainThumbnailUrl)) {
+        return true;
+      } else if (testQuery(data.brandName)) {
+        return true;
+      } else if (testQuery(data.content)) {
+        return true;
+      } else if (testQuery(formatDate(data.startDate))) {
+        return true;
+      } else if (testQuery(formatDate(data.endDate))) {
+        return true;
+      } else if (testQuery(data.title)) {
+        return true;
+      } else if (testQuery(data.hashtags.join(""))) {
+        return true;
+      }
+
+      return false;
+    });
+  }, [mergedData, search]);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -56,8 +93,9 @@ export default function EventManagePage() {
       <EventManage
         data={events}
         page={page}
-        mergedData={mergedData}
+        dataAfterSearch={dataAfterSearch}
         handlePageChange={handlePageChange}
+        handleSearchInput={handleSearchInput}
       />
     </Box>
   );
