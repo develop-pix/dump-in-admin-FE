@@ -12,7 +12,7 @@ import { IEvent } from "../../../interface/dto/Dto.interface";
 import { useMemo } from "react";
 
 interface IProps {
-  mergedData: IEvent[];
+  dataAfterSearch: IEvent[];
   page: number;
   handlePageChange: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
@@ -21,7 +21,7 @@ interface IProps {
 }
 
 export default function TableContainer({
-  mergedData,
+  dataAfterSearch,
   page,
   handlePageChange,
 }: IProps) {
@@ -31,9 +31,9 @@ export default function TableContainer({
   /** 10개 단위로 자른 데이터  */
   const sliceTenPages = useMemo(
     () =>
-      mergedData &&
-      [...mergedData]?.slice(page * pageUnit, page * pageUnit + pageUnit),
-    [mergedData, page]
+      dataAfterSearch &&
+      [...dataAfterSearch]?.slice(page * pageUnit, page * pageUnit + pageUnit),
+    [dataAfterSearch, page]
   );
 
   return (
@@ -70,7 +70,7 @@ export default function TableContainer({
       <TablePagination
         rowsPerPageOptions={[10]}
         component="div"
-        count={mergedData?.length}
+        count={dataAfterSearch?.length}
         rowsPerPage={9}
         page={page}
         onPageChange={handlePageChange}

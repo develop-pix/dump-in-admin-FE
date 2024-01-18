@@ -9,17 +9,19 @@ import { IEvent } from "../../interface/dto/Dto.interface";
 interface IProps {
   data: EventsState[];
   page: number;
-  mergedData: IEvent[];
+  dataAfterSearch: IEvent[];
   handlePageChange: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
     newPage: number
   ) => void;
+  handleSearchInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function EventManage({
-  mergedData,
+  dataAfterSearch,
   page,
   handlePageChange,
+  handleSearchInput,
 }: IProps) {
   return (
     <Box
@@ -65,6 +67,7 @@ export default function EventManage({
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="검색하기"
                 inputProps={{ "aria-label": "검색" }}
+                onChange={handleSearchInput}
               />
               <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
                 <SearchIcon />
@@ -74,7 +77,7 @@ export default function EventManage({
           </Box>
         </Box>
         <TableContainer
-          mergedData={mergedData}
+          dataAfterSearch={dataAfterSearch}
           page={page}
           handlePageChange={handlePageChange}
         />
