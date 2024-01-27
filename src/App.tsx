@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material";
 import {
   Dashboard,
-  EventEdit,
+  EventEditPage,
   EventManagePage,
   EventNew,
   Login,
@@ -37,7 +37,7 @@ function App() {
             <Route path="/event/new" element={<EventNew />}></Route>
           </Route>
           <Route element={<RequireAuth />}>
-            <Route path="/event/edit/:id" element={<EventEdit />}></Route>
+            <Route path="/event/edit/:id" element={<EventEditPage />}></Route>
           </Route>
           <Route element={<RequireAuth />}>
             <Route path="/branch/new" element={<PhotoboothNew />}></Route>
