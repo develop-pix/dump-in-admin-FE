@@ -25,7 +25,7 @@ export default function TableRow({
   const filteredDate = term && formatDate(term);
 
   /** ex: [tag, tag1, tag2] => "tag, tag1, tag2" */
-  const hasTags = hashtag?.join("");
+  const hasTags = hashtag?.join(", ");
 
   return (
     <Row hover role="checkbox" tabIndex={-1}>
