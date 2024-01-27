@@ -9,7 +9,6 @@ import { customColors } from "../../../styles/base/Variable.style";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 import { IEvent } from "../../../interface/dto/Dto.interface";
-import { useMemo } from "react";
 
 interface IProps {
   dataAfterSearch: IEvent[];
@@ -29,12 +28,9 @@ export default function TableContainer({
   const pageUnit = 10;
 
   /** 10개 단위로 자른 데이터  */
-  const sliceTenPages = useMemo(
-    () =>
-      dataAfterSearch &&
-      [...dataAfterSearch]?.slice(page * pageUnit, page * pageUnit + pageUnit),
-    [dataAfterSearch, page]
-  );
+  const sliceTenPages =
+    dataAfterSearch &&
+    [...dataAfterSearch]?.slice(page * pageUnit, page * pageUnit + pageUnit);
 
   return (
     <Box
