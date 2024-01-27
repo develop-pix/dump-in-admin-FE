@@ -24,7 +24,7 @@ export interface IEvent {
   content: "string";
   mainThumbnailUrl: "string";
   brandName: "string";
-  hashtags: ["string"];
+  hashtags: string[];
   startDate: string;
   endDate: string;
 }
@@ -39,4 +39,31 @@ export interface IEvents {
     queryCount: number;
     resultsLength: number;
   };
+}
+
+export interface ISingleEvent {
+  code: number;
+  message: string;
+  success: boolean;
+  data: {
+    id: number;
+    title: string;
+    content: string;
+    mainThumbnailUrl: string;
+    brandName: string;
+    hashtags: [string];
+    startDate: Date;
+    endDate: Date;
+    viewCount: number;
+    likesCount: number;
+    isPublic: boolean;
+    images: string[];
+  };
+}
+
+export interface IUpdateEvent {
+  code: number;
+  message: string;
+  success: boolean;
+  data: object;
 }
