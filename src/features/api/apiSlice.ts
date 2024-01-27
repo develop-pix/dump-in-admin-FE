@@ -1,7 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { isApiError, toErrorWithMessage } from "../../utils";
 import { setCredentials } from "../auth/authSlice";
-import { IDashboards, IEvents, IUser } from "../../interface/dto/Dto.interface";
+import {
+  IDashboards,
+  IEvents,
+  ISingleEvent,
+  IUpdateEvent,
+  IUser,
+} from "../../interface/dto/Dto.interface";
 import { eventsAdded } from "..";
 
 export const api = createApi({
@@ -14,7 +20,10 @@ export const api = createApi({
     getDashboard: build.query<IDashboards, void>({
       query: () => "api/dashboard",
     }),
-    getEvent: build.mutation<IEvents, { page: number; perPage: number }>({
+    getEvent: build.query<ISingleEvent, { id: number }>({
+      query: ({ id }) => `api/event/${id}`,
+    }),
+    getEvents: build.mutation<IEvents, { page: number; perPage: number }>({
       query: ({ page, perPage }) => `api/event?page=${page}&perPage=${perPage}`,
 
       async onQueryStarted({ page, perPage }, api) {
@@ -36,6 +45,43 @@ export const api = createApi({
           }
       },
     }),
+    eventUpdated: build.mutation<
+      IUpdateEvent,
+      {
+        title: string;
+        content: string;
+        mainThumbnailUrl: string;
+        brandName: string;
+        isPublic: boolean;
+        startDate: Date;
+        endDate: Date;
+        hashtags: string[];
+        images: string[];
+        id: number;
+      }
+    >({
+      query: (eventEdit) => {
+        return {
+          url: `/event/${eventEdit.id}`,
+          method: "PATCH",
+          body: JSON.stringify({
+            title: eventEdit.title,
+            content: eventEdit.content,
+            mainThumbnailUrl: eventEdit.mainThumbnailUrl,
+            brandName: eventEdit.brandName,
+            isPublic: eventEdit.isPublic,
+            startDate: eventEdit.startDate,
+            endDate: eventEdit.endDate,
+            hashtags: eventEdit.hashtags,
+            images: eventEdit.images,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+      },
+    }),
+
     userAuthenticated: build.mutation<
       IUser,
       { username: string; password: string }
@@ -72,5 +118,7 @@ export const api = createApi({
 export const {
   useUserAuthenticatedMutation,
   useGetDashboardQuery,
-  useGetEventMutation,
+  useGetEventsMutation,
+  useGetEventQuery,
+  useEventUpdatedMutation,
 } = api;
