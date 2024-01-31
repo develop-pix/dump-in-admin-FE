@@ -7,8 +7,6 @@
  * @throws 주어진 문자열이 Base64 형식이 아닐때 에러
  */
 export function base64ToBlob(base64: string, mimeType = "image/png"): Blob {
-  if (!isBase64(base64)) throw new Error("Invalid base64 format");
-
   const byteCharacters = atob(base64.split(",")[1]);
   const byteArrays: Uint8Array[] = [];
 
@@ -25,16 +23,4 @@ export function base64ToBlob(base64: string, mimeType = "image/png"): Blob {
   }
 
   return new Blob(byteArrays, { type: mimeType });
-}
-
-/**
- * 문자열이 올바른 Base64 인코딩 문자열인지 확인
- *
- * @param str - 테스트 할 문자열
- * @returns 문자열이 올바른 Base64 인코딩 문자열이면 true, 아닐시 false
- */
-function isBase64(str: string) {
-  const base64Regex =
-    /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
-  return base64Regex.test(str);
 }
