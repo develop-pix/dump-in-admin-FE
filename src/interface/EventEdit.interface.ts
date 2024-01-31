@@ -1,4 +1,5 @@
 import { EditorState } from "draft-js";
+import { ISingleEvent } from "./dto/Dto.interface";
 
 export interface EventEditInputFormProps {
   title: string;
@@ -15,4 +16,5 @@ export interface EventEditInputFormProps {
   setEndDate: React.Dispatch<React.SetStateAction<Date>>;
   hashtag: string[];
   setHashtag: React.Dispatch<React.SetStateAction<string[]>>;
+  data?: ISingleEvent["data"];
 }
