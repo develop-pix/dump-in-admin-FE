@@ -3,26 +3,14 @@ import { customColors } from "../../styles/base/Variable.style";
 import SearchIcon from "@mui/icons-material/Search";
 import AddButton from "../reuse/button/AddButton";
 import TableContainer from "./table/TableContainer";
-import { EventsState } from "../../features";
-import { IEvent } from "../../interface/dto/Dto.interface";
-
-interface IProps {
-  data: EventsState[];
-  page: number;
-  dataAfterSearch: IEvent[];
-  handlePageChange: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
-    newPage: number
-  ) => void;
-  handleSearchInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { EventManageProps } from "../../interface/EventManage.interface";
 
 export default function EventManage({
   dataAfterSearch,
   page,
   handlePageChange,
   handleSearchInput,
-}: IProps) {
+}: EventManageProps) {
   return (
     <Box
       sx={{

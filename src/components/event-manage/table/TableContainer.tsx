@@ -9,21 +9,13 @@ import { customColors } from "../../../styles/base/Variable.style";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 import { IEvent } from "../../../interface/dto/Dto.interface";
-
-interface IProps {
-  dataAfterSearch: IEvent[];
-  page: number;
-  handlePageChange: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
-    newPage: number
-  ) => void;
-}
+import { EventManageTableContainerProps } from "../../../interface/EventManage.interface";
 
 export default function TableContainer({
   dataAfterSearch,
   page,
   handlePageChange,
-}: IProps) {
+}: EventManageTableContainerProps) {
   /** 자를 페이지 단위 */
   const pageUnit = 10;
 

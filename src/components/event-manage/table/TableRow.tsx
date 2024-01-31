@@ -2,16 +2,8 @@ import { TableCell, TableRow as Row, Box } from "@mui/material";
 import EditButton from "../../reuse/button/EditButton";
 import DeleteButton from "../../reuse/button/DeleteButton";
 import { formatDate } from "../../../utils";
+import { EventTableRowProps } from "../../../interface/EventManage.interface";
 
-interface IProps {
-  id: number;
-  src: string;
-  name: string;
-  title: string;
-  description: string;
-  term: string;
-  hashtag: [string];
-}
 export default function TableRow({
   id,
   src,
@@ -20,7 +12,7 @@ export default function TableRow({
   description,
   term,
   hashtag,
-}: IProps) {
+}: EventTableRowProps) {
   /** 2023-02-02와 같은 형식의 Date */
   const filteredDate = term && formatDate(term);
 
