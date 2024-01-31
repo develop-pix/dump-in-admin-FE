@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { isApiError, toErrorWithMessage } from "../../utils";
 import { setCredentials } from "../auth/authSlice";
 import {
+  ICreatedEvent,
   IDashboards,
   IEvents,
   ISingleEvent,
@@ -45,6 +46,42 @@ export const api = createApi({
           }
       },
     }),
+    eventCreated: build.mutation<
+      ICreatedEvent,
+      {
+        title: string;
+        content: string;
+        mainThumbnailUrl: string;
+        brandName: string;
+        isPublic: boolean;
+        startDate: Date;
+        endDate: Date;
+        hashtags: string[];
+        images: string[];
+      }
+    >({
+      query: (eventEdit) => {
+        return {
+          url: `api/event`,
+          method: "POST",
+          body: JSON.stringify({
+            title: eventEdit.title,
+            content: eventEdit.content,
+            mainThumbnailUrl: eventEdit.mainThumbnailUrl,
+            brandName: eventEdit.brandName,
+            isPublic: eventEdit.isPublic,
+            startDate: eventEdit.startDate,
+            endDate: eventEdit.endDate,
+            hashtags: eventEdit.hashtags,
+            images: eventEdit.images,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+      },
+    }),
+
     eventUpdated: build.mutation<
       IUpdateEvent,
       {
@@ -62,9 +99,9 @@ export const api = createApi({
     >({
       query: (eventEdit) => {
         return {
-          url: `/event/${eventEdit.id}`,
+          url: `api/event/${eventEdit.id}`,
           method: "PATCH",
-          body: JSON.stringify({
+          body: {
             title: eventEdit.title,
             content: eventEdit.content,
             mainThumbnailUrl: eventEdit.mainThumbnailUrl,
@@ -74,9 +111,6 @@ export const api = createApi({
             endDate: eventEdit.endDate,
             hashtags: eventEdit.hashtags,
             images: eventEdit.images,
-          }),
-          headers: {
-            "Content-Type": "application/json",
           },
         };
       },
@@ -121,4 +155,5 @@ export const {
   useGetEventsMutation,
   useGetEventQuery,
   useEventUpdatedMutation,
+  useEventCreatedMutation,
 } = api;
