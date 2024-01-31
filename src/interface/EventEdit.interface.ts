@@ -1,5 +1,6 @@
 import { EditorState } from "draft-js";
 import { ISingleEvent } from "./dto/Dto.interface";
+import { useEventUpdatedMutation } from "../features";
 
 export interface EventEditInputFormProps {
   title: string;
@@ -17,4 +18,10 @@ export interface EventEditInputFormProps {
   hashtag: string[];
   setHashtag: React.Dispatch<React.SetStateAction<string[]>>;
   data?: ISingleEvent["data"];
+}
+
+export interface EventEditProps {
+  eventEditData: ISingleEvent | undefined;
+  eventUpdated: ReturnType<typeof useEventUpdatedMutation>[0];
+  params: number;
 }
