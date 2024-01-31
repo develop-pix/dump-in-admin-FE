@@ -67,3 +67,10 @@ export interface IUpdateEvent {
   success: boolean;
   data: object;
 }
+
+export interface ICreatedEvent {
+  code: number;
+  message: string;
+  success: boolean;
+  data: object;
+}
