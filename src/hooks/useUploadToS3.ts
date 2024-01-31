@@ -18,7 +18,6 @@ export const uploadFile = async (blob: Blob): Promise<string> => {
   try {
     await s3.upload(uploadParams).promise();
     const fileUrl = `https://${bucketName}.s3.${s3.config.region}.amazonaws.com/${key}`;
-    console.log("Upload Success", fileUrl);
 
     return fileUrl;
   } catch (err) {
