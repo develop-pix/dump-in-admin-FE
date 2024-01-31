@@ -4,7 +4,7 @@ import {
   Dashboard,
   EventEditPage,
   EventManagePage,
-  EventNew,
+  EventNewPage,
   Login,
   NotFound,
   PhotoboothEdit,
@@ -34,7 +34,7 @@ function App() {
             <Route path="/event" element={<EventManagePage />}></Route>
           </Route>
           <Route element={<RequireAuth />}>
-            <Route path="/event/new" element={<EventNew />}></Route>
+            <Route path="/event/new" element={<EventNewPage />}></Route>
           </Route>
           <Route element={<RequireAuth />}>
             <Route path="/event/edit/:id" element={<EventEditPage />}></Route>
