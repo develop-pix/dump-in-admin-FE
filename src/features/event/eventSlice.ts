@@ -19,7 +19,7 @@ export const eventSlice = createSlice({
       const payloadData = action.payload;
 
       const existEventIndex = state.findIndex(
-        (x) => x.page === payloadData.page
+        (curr) => curr.page === payloadData.page
       );
 
       if (existEventIndex !== -1) {
