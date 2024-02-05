@@ -130,8 +130,7 @@ export const api = createApi({
         credentials: "include",
       }),
 
-      // eslint-disable-next-line no-empty-pattern
-      async onQueryStarted({}, api) {
+      async onQueryStarted(_, api) {
         const { dispatch, queryFulfilled } = api;
         try {
           const { data } = await queryFulfilled;
