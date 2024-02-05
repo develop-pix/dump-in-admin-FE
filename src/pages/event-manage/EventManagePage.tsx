@@ -43,7 +43,7 @@ export default function EventManagePage() {
 
   const debounceSearch = useDebounce((term) => {
     setSearch(term);
-  }, 700);
+  }, 500);
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.currentTarget.value as string;
