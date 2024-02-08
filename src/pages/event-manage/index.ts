@@ -1,1 +1,1 @@
-export { default as EventManage } from "./EventManage";
+export { default as EventManagePage } from "./EventManagePage";

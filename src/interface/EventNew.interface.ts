@@ -1,4 +1,5 @@
 import { EditorState } from "draft-js";
+import { useEventCreatedMutation } from "../features";
 
 export interface EventNewInputFormProps {
   title: string;
@@ -15,4 +16,8 @@ export interface EventNewInputFormProps {
   setEndDate: React.Dispatch<React.SetStateAction<Date>>;
   hashtag: string[];
   setHashtag: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+export interface EventNewProps {
+  eventCreated: ReturnType<typeof useEventCreatedMutation>[0];
 }

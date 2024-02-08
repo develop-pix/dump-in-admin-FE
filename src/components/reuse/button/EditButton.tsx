@@ -8,7 +8,7 @@ export default function EditButton({ value }: EditButtonProps) {
   /* 편집 버튼 클릭시 edit/:id 페이지로 이동 */
   const onClickEditButton = (
     e: React.MouseEvent<HTMLButtonElement>,
-    value: string
+    value: number
   ) => {
     e.preventDefault();
     navigate(`./edit/${value}`);

@@ -12,10 +12,10 @@ export default function DashBoard() {
   /** 변경된 날짜 형식을 가지고 있는 데이터 */
   const filteredDateData = useMemo(
     () =>
-      dashboardData?.data.map((x) => {
+      dashboardData?.data.map((dashboard) => {
         return {
-          ...x,
-          date: formatDate(x.date),
+          ...dashboard,
+          date: formatDate(dashboard.date),
         };
       }),
     [dashboardData?.data]

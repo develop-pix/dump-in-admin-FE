@@ -6,8 +6,12 @@ import { EditorState } from "draft-js";
 import CancelButton from "../reuse/button/CancelButton";
 import SubmitButton from "../reuse/button/SubmitButton";
 import { useNavigate } from "react-router-dom";
+import { base64ToBlob } from "../../utils";
+import { uploadFile } from "../../hooks";
+import { stateToHTML } from "draft-js-export-html";
+import { EventNewProps } from "../../interface/EventNew.interface";
 
-export default function EventNew() {
+export default function EventNew({ eventCreated }: EventNewProps) {
   const [title, setTitle] = useState<string>("");
   const [photoboothName, setPhotoboothName] = useState<string>("");
   const [image, setImage] = useState<string[]>([]);
@@ -24,15 +28,23 @@ export default function EventNew() {
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      /* API 나오면 필수 값 검증 해야함. */
-      console.log(title);
-      console.log(photoboothName);
-      /* image[0]은 대표사진, 나머지는 일반 사진으로 변수 변경 하여 전송 */
-      console.log(image);
-      console.log(description);
-      console.log(startDate);
-      console.log(endDate);
-      console.log(hashtag);
+      const blobImages = image.map((data) => base64ToBlob(data));
+      const urlImages = await Promise.all(blobImages.map(uploadFile));
+
+      const eventCreateData = {
+        title,
+        content: stateToHTML(description.getCurrentContent()),
+        brandName: photoboothName,
+        startDate,
+        endDate,
+        images: urlImages,
+        hashtags: hashtag,
+        isPublic: true,
+        mainThumbnailUrl: urlImages[0],
+      };
+
+      eventCreated(eventCreateData);
+
       navigate(-1);
     } catch (error) {
       console.log(error);

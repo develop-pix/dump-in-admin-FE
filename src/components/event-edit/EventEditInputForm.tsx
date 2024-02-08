@@ -9,9 +9,7 @@ import DatePickerInput from "../reuse/input/DatePickerInput";
 import EventHashTags from "../reuse/input/EventHashTags";
 import { EventEditInputFormProps } from "../../interface/EventEdit.interface";
 import { SelectInputData } from "../../interface/reuse/Input.interface";
-import { useLocation } from "react-router-dom";
 import { ContentState, EditorState, convertFromHTML } from "draft-js";
-import { tempData } from "./TempTableData";
 
 export default function EventEditInputForm({
   title,
@@ -28,42 +26,40 @@ export default function EventEditInputForm({
   setEndDate,
   hashtag,
   setHashtag,
+  data,
 }: EventEditInputFormProps) {
-  const location = useLocation().pathname.split("/");
-
   /* API 생기면 서버에서 얻어옴, 동시에 PhotoboothName은 첫번째 값으로 초기화 */
   const tempPhotoboothData: SelectInputData[] = [
-    { photoboothId: 0, value: "포토이즘" },
-    { photoboothId: 1, value: "인생네컷" },
-    { photoboothId: 2, value: "하루필름" },
-    { photoboothId: 3, value: "포토매틱" },
+    { photoboothId: 0, value: "포토그레이" },
+    { photoboothId: 1, value: "하루필름" },
   ];
 
-  const GetEditData = (currentID: string) => {
-    /* 표 데이터 ( Test용 나중에 API로 데이터 GET) */
-    tempData.map((data) => {
-      if (data.id === currentID) {
-        const contentblocks = convertFromHTML(data.description);
-        const contentState = ContentState.createFromBlockArray(
-          contentblocks.contentBlocks,
-          contentblocks.entityMap
-        );
-
-        setTitle(data.title);
-        setImage([data.representativeImage].concat(data.image));
-        setPhotoboothName(data.photoboothName);
-        setDescription(EditorState.createWithContent(contentState));
-        setStartDate(data.startDate);
-        setEndDate(data.endDate);
-        setHashtag(data.hashtag);
-      }
-    });
-  };
-
   useEffect(() => {
-    GetEditData(location[location.length - 1]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (data) {
+      const contentblocks = convertFromHTML(data.content);
+      const contentState = ContentState.createFromBlockArray(
+        contentblocks.contentBlocks,
+        contentblocks.entityMap
+      );
+
+      setTitle(data.title);
+      setImage([data.mainThumbnailUrl].concat(data.mainThumbnailUrl));
+      setPhotoboothName(data.brandName);
+      setDescription(EditorState.createWithContent(contentState));
+      setStartDate(data.startDate);
+      setEndDate(data.endDate);
+      setHashtag(data.hashtags);
+    }
+  }, [
+    data,
+    setDescription,
+    setEndDate,
+    setHashtag,
+    setImage,
+    setPhotoboothName,
+    setStartDate,
+    setTitle,
+  ]);
 
   return (
     <Box

@@ -1,23 +1,30 @@
 import { Box } from "@mui/material";
 import { EditorState } from "draft-js";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { customColors } from "../../styles/base/Variable.style";
 import CancelButton from "../reuse/button/CancelButton";
 import SubmitButton from "../reuse/button/SubmitButton";
 import EventEditInputForm from "./EventEditInputForm";
 import { stateToHTML } from "draft-js-export-html";
+import { uploadFile } from "../../hooks";
+import { base64ToBlob } from "../../utils";
+import { EventEditProps } from "../../interface/EventEdit.interface";
+import { useNavigate } from "react-router-dom";
 
-export default function EventEdit() {
+export default function EventEdit({
+  eventEditData,
+  params,
+  eventUpdated,
+}: EventEditProps) {
   const [title, setTitle] = useState<string>("");
   const [photoboothName, setPhotoboothName] = useState<string>("");
-  const [image, setImage] = useState<string[]>([]);
+  const [image, setImage] = useState<string[]>([""]);
   const [description, setDescription] = useState<EditorState>(
     EditorState.createEmpty()
   );
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date>(new Date());
-  const [hashtag, setHashtag] = useState<string[]>([]);
+  const [hashtag, setHashtag] = useState<string[]>([""]);
 
   const navigate = useNavigate();
 
@@ -25,15 +32,24 @@ export default function EventEdit() {
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      /* API 나오면 필수 값 검증 해야함. */
-      console.log(title);
-      console.log(photoboothName);
-      /* image[0]은 대표사진, 나머지는 일반 사진으로 변수 변경 하여 전송 */
-      console.log(image);
-      console.log(stateToHTML(description.getCurrentContent()));
-      console.log(startDate);
-      console.log(endDate);
-      console.log(hashtag);
+      const blobImages = image.map((data) => base64ToBlob(data));
+      const urlImages = await Promise.all(blobImages.map(uploadFile));
+
+      const eventEditData = {
+        title,
+        content: stateToHTML(description.getCurrentContent()),
+        brandName: photoboothName,
+        startDate,
+        endDate,
+        images: urlImages,
+        hashtags: hashtag,
+        id: params,
+        isPublic: true,
+        mainThumbnailUrl: urlImages[0],
+      };
+
+      eventUpdated(eventEditData);
+
       navigate(-1);
     } catch (error) {
       console.log(error);
@@ -79,6 +95,7 @@ export default function EventEdit() {
         </Box>
         <EventEditInputForm
           title={title}
+          data={eventEditData?.data}
           setTitle={setTitle}
           photoboothName={photoboothName}
           setPhotoboothName={setPhotoboothName}
